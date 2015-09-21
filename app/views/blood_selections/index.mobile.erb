@@ -1,0 +1,25 @@
+<div data-role="header">
+    <h1><%= @patient.externalize %></h1>
+    <h2><%= 'Listing blood selections' %></h2>
+</div>
+<div data-role="content">
+  <div id="blood_selections_container">
+    <ul data-role="listview" data-inset="true">
+      <% @blood_selections.each do |blood_selection| %>
+          <li>
+            <%= render :partial => 'blood_selection', locals: { blood_selection: blood_selection } %>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+  <div data-role="navbar">
+    <ul>
+      <li>
+        <%= link_to patients_path, class: :anchorButton do %>
+            <%= image_tag('black/back.png', class: 'button_image_text') %>
+            <%= 'Back' %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>

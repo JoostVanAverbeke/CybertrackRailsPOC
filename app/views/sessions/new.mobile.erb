@@ -1,0 +1,18 @@
+<%= content_tag "div", id: "sign_in_form", "data-role" => "content" do %>
+    <%= image_tag('branding/logo.png', class: 'center') %>
+    <%= form_tag sessions_path do %>
+          <div>
+            <%= label_tag :login, t('signin.helpers.label.login') %>
+            <%= text_field_tag :login, nil, autofocus: true %>
+          </div>
+          <div>
+            <%= label_tag :password, t('signin.helpers.label.password') %>
+            <%= password_field_tag :password %>
+          </div>
+          <div>
+            <%= label_tag :language, t('signin.helpers.label.language') %>
+            <%= select_tag(:language, options_for_select([['English', 'en'], ['French', 'fr'], ['German', 'de'], ['Dutch', 'nl']])) %>
+          </div>
+          <div class="actions"><%= submit_tag "Log in" %></div>
+    <% end %>
+<% end %>

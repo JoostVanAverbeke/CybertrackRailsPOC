@@ -1,0 +1,78 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require jquery.mobile
+ *= require jquery_mobile/Cybertrack-POC.min
+ *= require jquery_mobile/jquery.mobile.icons.min
+ *= require_tree .
+ */
+body, p, ol, ul, td {
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size:   13px;
+    line-height: 18px;
+}
+a {
+    color: #00a1d9;
+}
+pre {
+    background-color: #eee;
+    padding: 10px;
+    font-size: 11px;
+}
+
+div.field, div.actions {
+    margin-bottom: 10px;
+}
+
+.red { background-color: red; }
+
+.green { background-color: green; }
+
+/* Styles for fieldset */
+.fieldset_label {
+    font-weight:bold;
+}
+
+/* Style for button with an image/icon and a text */
+.button_image_text {
+    display: block;
+    float: left;
+    margin-right: 0.5em;
+    height: 20px;
+    width: auto;
+}
+
+/*background color of jquery mobile header*/
+.ui-page .ui-header {
+    background: #47d9bf;
+}
+
+.nav-search .ui-btn-up-a {
+    background-image:none;
+    background-color:#333333;
+}
+.nav-search .ui-btn-inner {
+    border-top: 1px solid #888;
+    border-color: rgba(255, 255, 255, .1);
+}
+
+/* center img tag in the parent div */
+img.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* auto size images for responsive webdesign */
+img {
+    max-width:100%;
+    height:auto;
+}

@@ -1,0 +1,19 @@
+<div class="k-block">
+  <h2 class="header">Log in</h2>
+
+  <%= form_tag sessions_path do %>
+    <div class="field">
+      <%= label_tag :login, t('signin.helpers.label.login') %><br/>
+      <%= text_field_tag :login %>
+    </div>
+    <div class="field">
+      <%= label_tag :password, t('signin.helpers.label.password') %><br/>
+      <%= password_field_tag :password %>
+    </div>
+    <div class="field">
+      <%= label_tag :language, t('signin.helpers.label.language') %><br/>
+      <%= select_tag(:language, options_for_select([['English', 'en'], ['French', 'fr'], ['German', 'de'], ['Dutch', 'nl']])) %>
+    </div>
+    <div class="actions"><%= submit_tag "Log in" %></div>
+  <% end %>
+</div>

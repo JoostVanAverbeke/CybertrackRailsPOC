@@ -1,0 +1,34 @@
+<div data-role="header" data-theme="a" class="mobile_header">
+  <h1>CyberTrack</h1>
+  <% if current_user? %>
+    <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
+  <% end %>
+  <%= image_tag('branding/32x32/blood_transfusion.png', :alt => 'logo app', :border => '1', :class => "ui-btn-right") %>
+</div><!-- /header -->
+
+<div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel" data-theme="a">
+
+  <ul data-role="listview" data-theme="a" data-divider-theme="a" style="margin-top:-16px;" class="nav-search">
+    <li data-icon="delete" style="background-color:#111;">
+      <a href="#" data-rel="close">Close menu</a>
+    </li>
+    <!--An example form jquery mobile slide menu vertical-->
+    <!--<li data-filtertext="button icon">-->
+    <!--<a href="buttons/buttons-icons.html">Button icons</a>-->
+    <!--</li>-->
+    <li>
+      <%= link_to "Patients", patients_url, data: { ajax: false } %>
+    </li>
+    <li>
+      <%= link_to "Log out", logout_path, data: { ajax: false } %>
+    </li>
+  </ul>
+
+  <!-- panel content goes here -->
+</div><!-- /panel -->
+
+<div class="flash">
+  <% flash.each do |key, msg| %>
+      <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_ #{key}" %>
+  <% end %>
+</div>

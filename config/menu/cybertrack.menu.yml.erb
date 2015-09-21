@@ -1,0 +1,34 @@
+-
+  text: "Routine"
+  items:
+    -
+      text: "Patients"
+      items:
+        -
+          text: "By Surname, First name"
+          url:  <%= Rails.application.routes.url_helpers.patients_path %>
+        -
+          text: "By Birth Date"
+          url: <%= Rails.application.routes.url_helpers.patients_path %>
+    -
+      text: "Blood transfusions"
+      items:
+        -
+          text: "identification"
+          url: <%= Rails.application.routes.url_helpers.blood_selections_index_path %>
+-
+  text: "Configuratie"
+  items:
+    -
+      text: "Users"
+    -
+      text: "Physicians"
+-
+  text: "Google"
+  url: "http://www.google.com"
+-
+  text: "Kendo UI"
+  url: "http://www.kendoui.com"
+-
+  text: "Logout"
+  url: <%= Rails.application.routes.url_helpers.logout_path %>
