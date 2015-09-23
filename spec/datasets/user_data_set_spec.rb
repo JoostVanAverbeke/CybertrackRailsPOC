@@ -8,11 +8,11 @@ describe UserDataSet do
     {"tt_User"=>[ user_bar ] }
   }
 
-  let (:ds_user) {
+  let (:ds_users) {
     { "dsUsers"=> tt_user }
   }
 
-  let(:user_data_set) { UserDataSet.new(build_httparty_response(ds_user))}
+  let(:user_data_set) { UserDataSet.new(build_httparty_response(ds_users))}
 
   it 'returns \'dsUsers\' sub element from the httparty response' do
     expect(user_data_set.ds_user).to eq(tt_user)

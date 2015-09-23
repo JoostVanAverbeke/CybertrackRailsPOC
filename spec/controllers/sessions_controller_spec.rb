@@ -1,17 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe SessionsController, type: :controller do
+  let(:user_bar) {
+    {"usr_Id"=>65, "usr_LoginName"=>"bar", "usr_FirstName"=>"Bar", "usr_LastName"=>"Doe", "usr_Initials"=>"BD"}
+  }
+  let (:tt_user) {
+    {"tt_User"=>[ user_bar ] }
+  }
+
+  let (:ds_users) {
+    { "dsUsers"=> tt_user }
+  }
+
 
   before :each do
     # Stub the find UserService instance method
-    user_response_hash = {
-        "dsUsers"=> {
-            "tt_User"=>[
-                {"usr_Id"=>65, "usr_LoginName"=>"bar", "usr_FirstName"=>"Bar", "usr_LastName"=>"Doe", "usr_Initials"=>"BD"}
-            ]
-        }
-    }
-   allow_any_instance_of(UserService).to receive(:find).and_return(build_httparty_response(user_response_hash))
+   allow_any_instance_of(UserService).to receive(:find).and_return(build_httparty_response(ds_users))
   end
 
   describe "GET #new" do
