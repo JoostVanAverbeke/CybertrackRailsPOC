@@ -1,10 +1,11 @@
 $(document).ready(function () {
     var crudServiceBaseUrl = $('#grid').data('url');
+    var locale = $('#grid').data('locale');
     var httpBasicAuthorization = $('#grid').data('authorization');
     var dataSource = createPatientKendoDataSource(crudServiceBaseUrl, httpBasicAuthorization);
-    var debug = true;
+    var debug = false;
 
-    kendo.culture('nl-BE');
+    kendo.culture(locale);
     if (debug) mockGetRequest(crudServiceBaseUrl);
     $("#grid").kendoGrid({
         dataSource: dataSource,

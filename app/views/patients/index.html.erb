@@ -1,6 +1,7 @@
 <h1>Listing Patients</h1>
 <%= content_tag 'div', id: 'grid', data: {
                              url: "#{RestHelper.rest_root_url}/bloodselections/patients",
+                             locale: I18n.locale,
                              authorization: @http_basic_authorization
                      } do %>
 <% end %>
