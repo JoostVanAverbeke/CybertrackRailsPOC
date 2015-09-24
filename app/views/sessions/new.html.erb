@@ -12,8 +12,8 @@
     </div>
     <div class="field">
       <%= label_tag :language, t('signin.helpers.label.language') %><br/>
-      <%= select_tag(:language, options_for_select([['English', 'en'], ['French', 'fr'], ['German', 'de'], ['Dutch', 'nl']])) %>
+      <%= select_tag(:language, options_for_select(language_encodings)) %>
     </div>
-    <div class="actions"><%= submit_tag "Log in" %></div>
+    <div class="actions"><%= submit_tag t('signin.helpers.label.login_action') %></div>
   <% end %>
 </div>

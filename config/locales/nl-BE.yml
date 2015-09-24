@@ -1,0 +1,10 @@
+nl-BE:
+  application:
+    helpers:
+      label:
+        back: 'Terug'
+      languages:
+        german: 'Duits'
+        english: 'Engels'
+        french: 'Frans'
+        flemish: 'Vlaams'

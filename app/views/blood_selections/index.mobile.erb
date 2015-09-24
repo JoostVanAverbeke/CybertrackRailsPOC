@@ -1,6 +1,6 @@
 <div data-role="header">
     <h1><%= @patient.externalize %></h1>
-    <h2><%= 'Listing blood selections' %></h2>
+    <h2><%= t('blood_selections.helpers.label.listing') %></h2>
 </div>
 <div data-role="content">
   <div id="blood_selections_container">
@@ -17,7 +17,7 @@
       <li>
         <%= link_to patients_path, class: :anchorButton do %>
             <%= image_tag('black/back.png', class: 'button_image_text') %>
-            <%= 'Back' %>
+            <%= t('application.helpers.label.back') %>
         <% end %>
       </li>
     </ul>

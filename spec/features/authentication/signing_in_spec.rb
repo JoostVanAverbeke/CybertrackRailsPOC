@@ -33,7 +33,7 @@ feature 'Signing in' do
       visit '/'
       fill_in login, with: 'john'
       fill_in password, with: '1234_password'
-      select 'Dutch', from: :language
+      select 'Flemish', from: :language
       click_button do_login
       expect(page).to have_content('Succesvol ingelogd.')
     end

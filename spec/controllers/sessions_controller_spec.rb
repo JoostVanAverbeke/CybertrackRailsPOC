@@ -22,13 +22,13 @@ RSpec.describe SessionsController, type: :controller do
   end
 
   describe "POST #create" do
-    subject { post :create, { login: 'bar', password: '1', language: 'nl'}}
+    subject { post :create, { login: 'bar', password: '1', language: 'nl-BE'}}
     it "redirects to the root_url" do
       expect(subject).to redirect_to(root_url)
     end
     it "stores a hash containing the login, password and the locale in the session[:user]" do
       subject
-      expect(session[:user]).to eq({ login: 'bar', password: '1', locale: 'nl'})
+      expect(session[:user]).to eq({ login: 'bar', password: '1', locale: 'nl-BE'})
     end
   end
 

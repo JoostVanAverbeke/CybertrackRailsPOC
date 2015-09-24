@@ -1,0 +1,5 @@
+en:
+  patients:
+    helpers:
+      label:
+        listing: 'Patients'

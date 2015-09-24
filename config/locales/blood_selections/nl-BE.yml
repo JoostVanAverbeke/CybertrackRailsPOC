@@ -1,0 +1,5 @@
+nl-BE:
+  blood_selections:
+    helpers:
+      label:
+        listing: 'Bloed selecties'
