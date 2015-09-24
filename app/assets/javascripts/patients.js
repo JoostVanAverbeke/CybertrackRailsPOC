@@ -1,41 +1,3 @@
-$(document).ready(function () {
-    var crudServiceBaseUrl = $('#grid').data('url');
-    var locale = $('#grid').data('locale');
-    var httpBasicAuthorization = $('#grid').data('authorization');
-    var dataSource = createPatientKendoDataSource(crudServiceBaseUrl, httpBasicAuthorization);
-    var debug = false;
-
-    kendo.culture(locale);
-    if (debug) mockGetRequest(crudServiceBaseUrl);
-    $("#grid").kendoGrid({
-        dataSource: dataSource,
-        navigatable: true,
-        pageable: true,
-        sortable: true,
-        filterable: true,
-        columns: [
-            { field: "prsn_LastName", title: "Surname", width: "150px" },
-            { field: "prsn_FirstName", title: "First name", width: "150px" },
-            { field: "prsn_BirthDate", title: "Birth date", format: "{0:dd/MM/yyyy}", width: "100px"},
-            { field: "prsn_Externalization", title: "Externalization", width: "300px" },
-//                { field: "amount", format: "{0:c}", width: "150px" },
-            { command: [
-                {
-                    name: "blood selections",
-                    click: function(e) {
-                        // e.target is the DOM element representing the button
-                        var tr = $(e.target).closest("tr"); // get the current table row (tr)
-                        // get the data bound to the current table row
-                        var data = this.dataItem(tr);
-                        console.log("Details for: " + data.prsn_Id);
-                        window.location = "http://127.0.0.1:3600/patients/" + data.prsn_Id + "/blood_selections";
-                    }
-                }]
-            }
-        ]
-    });
-});
-
 function createPatientKendoDataSource(url, httpBasicAuthorization) {
     var dataSource = new kendo.data.DataSource({
         transport: {
@@ -58,7 +20,8 @@ function createPatientKendoDataSource(url, httpBasicAuthorization) {
                     prsn_LastName: { type: "string"},
                     prsn_FirstName: { type: "string"},
                     prsn_BirthDate: { type: "date"},
-                    prsn_Externalization: { type: "string"}
+                    prsn_Externalization: { type: "string"},
+                    prsn_Object: { type: "integer"}
                 }
             },
             data: function (response) {
