@@ -1,27 +1,25 @@
 require 'rails_helper'
 
 describe UserDataSet do
-  let(:response) {
-    {
-        "dsUsers"=> {
-            "tt_User"=>[
-                {"usr_Id"=>65, "usr_LoginName"=>"bar", "usr_FirstName"=>"Bar", "usr_LastName"=>"Doe", "usr_Initials"=>"BD"}
-            ]
-        }
-    }
+  let(:user_bar) {
+    {"usr_Id"=>65, "usr_LoginName"=>"bar", "usr_FirstName"=>"Bar", "usr_LastName"=>"Doe", "usr_Initials"=>"BD"}
   }
-  let(:user_data_set) { UserDataSet.new(build_httparty_response(response))}
+  let (:tt_user) {
+    {"tt_User"=>[ user_bar ] }
+  }
+
+  let (:ds_users) {
+    { "dsUsers"=> tt_user }
+  }
+
+  let(:user_data_set) { UserDataSet.new(build_httparty_response(ds_users))}
 
   it 'returns \'dsUsers\' sub element from the httparty response' do
-    expect(user_data_set.ds_user).to eq({
-                                             "tt_User"=>[
-                                                 {"usr_Id"=>65, "usr_LoginName"=>"bar", "usr_FirstName"=>"Bar", "usr_LastName"=>"Doe", "usr_Initials"=>"BD"}
-                                             ]
-                                         })
+    expect(user_data_set.ds_user).to eq(tt_user)
   end
 
   it 'returns the \'tt_User\' sub element from the httparty response' do
-    expect(user_data_set.tt_user[0]).to eq({"usr_Id"=>65, "usr_LoginName"=>"bar", "usr_FirstName"=>"Bar", "usr_LastName"=>"Doe", "usr_Initials"=>"BD"})
+    expect(user_data_set.tt_user[0]).to eq(user_bar)
   end
 
   it 'returns an array of User model instances constructed from the json items in tt_User' do
