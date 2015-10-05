@@ -3,3 +3,8 @@ nl-BE:
     helpers:
       label:
         listing: 'Patienten'
+        surname: 'Achternaam'
+        first_name: 'Voornaam'
+        birthdate: 'Geboortedatum'
+        externalization: 'Externalisering'
+        bloodselections: 'Bloed selecties'

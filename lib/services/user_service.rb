@@ -15,9 +15,12 @@ class UserService
 
   def find(options = {})
     options.merge!({basic_auth: @auth})
-    self.class.get('/users', options)
+    catch_exceptions do
+      self.class.get('/users', options)
+    end
   end
 end
+
 
 # user_service = UserService.new('laurensvdb', '1')
 #

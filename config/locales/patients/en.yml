@@ -3,3 +3,8 @@ en:
     helpers:
       label:
         listing: 'Patients'
+        surname: 'Surname'
+        first_name: 'First name'
+        birthdate: 'Birthdate'
+        externalization: 'Externalization'
+        bloodselections: 'Blood selections'
