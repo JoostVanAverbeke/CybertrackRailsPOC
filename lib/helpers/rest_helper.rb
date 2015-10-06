@@ -10,7 +10,7 @@ module RestHelper
   def catch_exceptions
     begin
       yield
-    rescue HTTParty::Error => error
+    rescue HTTParty::Error, StandardError => error
       raise RemoteRestError.new error.message
     end
   end

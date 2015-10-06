@@ -13,11 +13,15 @@ class BloodSelectionService
 
   def patients(options = {})
     options.merge!({basic_auth: @auth})
-    self.class.get('/bloodselections/patients', options)
+    catch_exceptions do
+      self.class.get('/bloodselections/patients', options)
+    end
   end
 
   def blood_selections(patient_id, options = {})
     options.merge!({basic_auth: @auth})
-    self.class.get("/patients/#{patient_id}/bloodselections", options)
+    catch_exceptions do
+      self.class.get("/patients/#{patient_id}/bloodselections", options)
+    end
   end
 end

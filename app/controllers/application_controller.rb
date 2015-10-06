@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :build_menu, :set_session_locale, :prepare_for_mobile
+  rescue_from RemoteRestError, with: :remote_rest_service_not_available
 
   protected
   def build_menu
@@ -66,6 +67,10 @@ class ApplicationController < ActionController::Base
       session[:mobile_param] = params[:mobile] if params[:mobile]
       request.format = :mobile if mobile_device?
     end
+  end
+
+  def remote_rest_service_not_available
+    render plain: "Remote REST Service not available", status: :service_unavailable
   end
 
   helper_method :current_user, :current_user?, :authenticate_user!, :set_session_locale,
