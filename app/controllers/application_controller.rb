@@ -65,7 +65,16 @@ class ApplicationController < ActionController::Base
     # If mobile and extension is .pdf e.g. patients/1.pdf => then don't treat as mobile
     unless request.format.eql?(Mime::PDF)
       session[:mobile_param] = params[:mobile] if params[:mobile]
-      request.format = :mobile if mobile_device?
+      request.format = mobile_request_format if mobile_device?
+    end
+  end
+
+  def mobile_request_format
+    kendo_ui = true
+    if kendo_ui
+      :mkendo
+    else
+      :mobile
     end
   end
 

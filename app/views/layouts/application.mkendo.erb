@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>
+    <% if content_for?(:title) %>
+        <%= yield(:title) %>
+    <% else %>
+        CyberTrack
+    <% end %>
+  </title>
+  <!--To limit the size on the iphone set the content -->
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <%= stylesheet_link_tag    "mkendo/application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "mkendo/application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+<div id="formappearance" data-role="view" data-title="Default Apperance" data-use-native-scrolling="true" class="default">
+  <form action="./index.html">
+    <ul data-role="listview" data-style="inset">
+      <li>
+        <label>Select element
+          <select>
+            <option value="First Option">First Option</option>
+            <option value="Second Option">Second Option</option>
+            <option value="Third Option">Third Option</option>
+            <option value="Fourth Option">Fourth Option</option>
+          </select>
+        </label>
+      </li>
+      <li>
+        <label>DropDownList
+          <select id="dropdown">
+            <option value="First Option">First Option</option>
+            <option value="Second Option">Second Option</option>
+            <option value="Third Option">Third Option</option>
+            <option value="Fourth Option">Fourth Option</option>
+            <option value="First Option">Fifth Option</option>
+            <option value="Sixth Option">Sixth Option</option>
+          </select>
+        </label>
+      </li>
+      <li>
+        <label>Slider
+          <input id="slider" data-role="slider" type="range" max="100" />
+        </label>
+      </li>
+      <li>
+        <label>Type text
+          <input type="text" value="Text" />
+        </label>
+      </li>
+      <li>
+        <label>
+          Type password
+          <input type="password" value="password" />
+        </label>
+      </li>
+      <li>
+        <label>
+          Type search
+          <input type="search" value="search" />
+        </label>
+      </li>
+      <li>
+        <label>
+          Type url
+          <input type="url" value="http://www.telerik.com" />
+        </label>
+      </li>
+      <li>
+        <label>
+          Type email
+          <input type="email" value="kendoui@telerik.com" />
+        </label>
+      </li>
+      <li>
+        <label>
+          Type number
+          <input type="number" value="20" />
+        </label>
+      </li>
+      <li>
+        <label>
+          Type tel
+          <input type="tel" value="+44 22 11 10" />
+        </label>
+      </li>
+      <li>
+        <label>
+          Type date
+          <input type="date" value="2012-03-22" />
+        </label>
+      </li>
+      <li>
+        <label>
+          Type time
+          <input type="time" value="22:30" />
+        </label>
+      </li>
+      <li>
+        <label>
+          Type month
+          <input type="month" value="2012-01" />
+        </label>
+      </li>
+      <li>
+        <label>
+          Type datetime-local
+          <input type="datetime-local" value="2012-03-22T20:15" />
+        </label>
+      </li>
+      <li>
+        <label>
+          Textarea
+          <textarea style="resize: none">Multiline
+            Text</textarea>
+        </label>
+      </li>
+    </ul>
+  </form>
+</div>
+    <section data-role="layout" data-id="default">
+      <header data-role="header">
+        <div data-role="navbar">My App</div>
+      </header>
+
+
+      <footer data-role="footer">
+        <div data-role="tabstrip">
+          <a href="#home">Home</a>
+        </div>
+      </footer>
+    </section>
+    <script>
+        var app = new kendo.mobile.Application(document.body, { skin: "nova" });
+    </script>
+</body>
+</html>
