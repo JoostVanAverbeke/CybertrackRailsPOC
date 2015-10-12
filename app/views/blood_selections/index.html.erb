@@ -1,3 +1,67 @@
 <h1><%= t('blood_selections.helpers.label.listing') %></h1>
 <h3><%= @patient.externalize %></h3>
 <%= render :partial => 'person_medical_record', locals: { patient: @patient } %>
+
+<%= content_tag 'div', id: 'grid', data: {
+        url: "#{RestHelper.rest_root_url}/patients/#{@patient.prsn_Object}/bloodselections",
+        locale: I18n.locale,
+        authorization: @http_basic_authorization,
+        labels: {
+                product: t('blood_selections.helpers.label.product'),
+                status: t('blood_selections.helpers.label.status'),
+                objectTime: t('blood_selections.helpers.label.object_time'),
+                bloodGroup: t('blood_selections.helpers.label.blood_group'),
+                rhesus: t('blood_selections.helpers.label.rhesus'),
+                attributes: t('blood_selections.helpers.label.attributes')
+
+        }
+} do %>
+<% end %>
+<script>
+    $(document).ready(function () {
+        var crudServiceBaseUrl = $('#grid').data('url');
+        var locale = $('#grid').data('locale');
+        var httpBasicAuthorization = $('#grid').data('authorization');
+        var dataSource = createBloodSelectionKendoDataSource(crudServiceBaseUrl, httpBasicAuthorization);
+        var productLabel = $('#grid').data('labels').product;
+        var statusLabel = $('#grid').data('labels').status;
+        var objectTimeLabel = $('#grid').data('labels').objectTime;
+        var bloodGroupLabel = $('#grid').data('labels').bloodGroup;
+        var rhesusLabel = $('#grid').data('labels').rhesus;
+        var attributesLabel = $('#grid').data('labels').attributes;
+
+        var debug = true;
+
+        kendo.culture(locale);
+        if (debug) mockGetRequest(crudServiceBaseUrl);
+        $("#grid").kendoGrid({
+            dataSource: dataSource,
+            navigatable: true,
+            pageable: true,
+            sortable: true,
+            filterable: true,
+            columns: [
+                { field: "bsel_ProductMnemonic", title: productLabel, width: "150px" },
+                { field: "bsel_StatusString", title: statusLabel, width: "150px" },
+                { field: "bsel_OrderLowestObjectTime", title: objectTimeLabel, format: "{0:dd/MM/yyyy}", width: "100px"},
+                { field: "prsn_Externalization", title: bloodGroupLabel, width: "300px" },
+                { field: "bsel_BloodGroupString", title: bloodGroupLabel, width: "150px"},
+                { field: "bsel_RhesusString", title: rhesusLabel, width: "150px"},
+                { command: [
+                    {
+                        name: attributesLabel,
+                        click: function(e) {
+                            // e.target is the DOM element representing the button
+                            var tr = $(e.target).closest("tr"); // get the current table row (tr)
+                            // get the data bound to the current table row
+                            var data = this.dataItem(tr);
+                            console.log("Details for: " + data.bsel_Id);
+                            window.location = "http://192.168.1.38:3600/bloodbags/" + data.bsel_Id + "/attributes";
+                        }
+                    }]
+                }
+            ]
+        });
+    });
+</script>
+

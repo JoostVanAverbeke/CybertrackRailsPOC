@@ -3,3 +3,9 @@ nl-BE:
     helpers:
       label:
         listing: 'Bloed selecties'
+        product: 'Bloed Product'
+        status: 'Status'
+        object_time: 'Object Tijd'
+        blood_group: 'Bloedgroep'
+        rhesus: 'Rhesus'
+        attributes: 'Bloed zak attributen'

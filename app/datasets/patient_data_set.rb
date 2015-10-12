@@ -14,6 +14,8 @@ class PatientDataSet
     ds_patient['tt_Person'] if http_ok?
   end
 
+  # TODO(JVA) this is a very ugly implementation.
+  # We should fix the GLIMS REST remote services
   def ds_patient
     @response['dsPatients'] ? @response['dsPatients'] : @response['dsPerson'] if http_ok?
   end
