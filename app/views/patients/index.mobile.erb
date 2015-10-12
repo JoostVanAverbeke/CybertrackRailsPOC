@@ -5,7 +5,7 @@
   <div id="referrals_container">
     <ul data-role="listview" data-inset="true" data-autodividers="true" data-filter-theme="b">
       <% @patients.each do |patient| %>
-        <li><%= link_to patient.prsn_Externalization,  patient_blood_selections_path(patient.prsn_Object) %></li>
+        <li><%= link_to patient.prsn_Externalization,  patient_blood_selections_path(patient.prsn_Id) %></li>
       <% end %>
     </ul>
   </div>

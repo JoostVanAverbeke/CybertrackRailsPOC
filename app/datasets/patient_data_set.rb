@@ -15,7 +15,7 @@ class PatientDataSet
   end
 
   def ds_patient
-    @response['dsPatients'] if http_ok?
+    @response['dsPatients'] ? @response['dsPatients'] : @response['dsPerson'] if http_ok?
   end
 
   def patients

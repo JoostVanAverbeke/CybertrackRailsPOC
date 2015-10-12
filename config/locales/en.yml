@@ -29,3 +29,7 @@ en:
         english: 'English'
         french: 'French'
         flemish: 'Flemish'
+      menu:
+        close: 'Close menu'
+        patients: 'Patients'
+        sign_out: 'Log out'

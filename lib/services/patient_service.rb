@@ -21,7 +21,7 @@ class PatientService
   def find_by_id(id, options = {})
     options.merge!({basic_auth: @auth})
     catch_exceptions do
-      self.class.get("/patients/#{id}", options)
+      self.class.get("/patients/#{id}/personmedicalrecord", options)
     end
   end
 end

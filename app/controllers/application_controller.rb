@@ -70,7 +70,7 @@ class ApplicationController < ActionController::Base
   end
 
   def mobile_request_format
-    kendo_ui = true
+    kendo_ui = false
     if kendo_ui
       :mkendo
     else

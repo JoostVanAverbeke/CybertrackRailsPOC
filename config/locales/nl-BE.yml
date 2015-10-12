@@ -8,3 +8,7 @@ nl-BE:
         english: 'Engels'
         french: 'Frans'
         flemish: 'Vlaams'
+      menu:
+        close: 'Sluit menu'
+        patients: 'Patienten'
+        sign_out: 'Afmelden'

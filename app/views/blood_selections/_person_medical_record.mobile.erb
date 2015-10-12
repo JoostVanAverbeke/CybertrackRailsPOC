@@ -1,0 +1,33 @@
+<%= content_tag 'fieldset', data: { role: :collapsible, collapsed: false, theme: 'c'} do %>
+    <legend><%= t('patients.helpers.label.person_medical_record' %></legend>
+    <% if patient.prsn_BloodGroupString %>
+        <p><%= label_tag :prsn_BloodGroupString, t('patients.helpers.label.blood_group')%><%= patient.prsn_BloodGroupString %></p>
+    <% end %>
+    <% if patient.prsn_RhesusString %>
+        <p><%= label_tag :prsn_RhesusString, t('patients.helpers.label.rhesus') %><%= patient.prsn_RhesusString %></p>
+    <% end %>
+    <% if patient.prsn_PositiveScreening %>
+        <p>
+          <%= label_tag :prsn_PositiveScreening, t('patients.helpers.label.positive_screening') %>
+          <%= content_tag 'div', class: :red do %>
+            <%= patient.prsn_PositiveScreening %>
+          <% end %>
+        </p>
+    <% end %>
+    <% if patient.prsn_TransfusionAdvice %>
+        <p>
+          <%= label_tag :prsn_TransfusionAdvice, t('patients.helpers.label.transfusion_advice') %>
+          <%= content_tag 'div', class: :red do %>
+            <%= patient.prsn_TransfusionAdvice %>
+          <% end %>
+        </p>
+    <% end %>
+    <% if patient.prsn_TransfusionReaction %>
+        <p>
+          <%= label_tag :prsn_TransfusionReaction, t('patients.helpers.label.transfusion_reaction') %>
+          <%= content_tag 'div', class: :red do %>
+            <%= patient.prsn_TransfusionReaction %>
+          <% end %>
+        </p>
+    <% end %>
+<% end %>

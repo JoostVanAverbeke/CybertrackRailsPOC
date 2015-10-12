@@ -10,17 +10,17 @@
 
   <ul data-role="listview" data-theme="a" data-divider-theme="a" style="margin-top:-16px;" class="nav-search">
     <li data-icon="delete" style="background-color:#111;">
-      <a href="#" data-rel="close">Close menu</a>
+      <a href="#" data-rel="close"><%= t('application.helpers.menu.close') %></a>
     </li>
     <!--An example form jquery mobile slide menu vertical-->
     <!--<li data-filtertext="button icon">-->
     <!--<a href="buttons/buttons-icons.html">Button icons</a>-->
     <!--</li>-->
     <li>
-      <%= link_to "Patients", patients_url, data: { ajax: false } %>
+      <%= link_to t('application.helpers.menu.patients'), patients_url, data: { ajax: false } %>
     </li>
     <li>
-      <%= link_to "Log out", logout_path, data: { ajax: false } %>
+      <%= link_to t('application.helpers.menu.sign_out'), logout_path, data: { ajax: false } %>
     </li>
   </ul>
 

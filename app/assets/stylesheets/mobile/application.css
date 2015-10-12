@@ -32,9 +32,11 @@ div.field, div.actions {
     margin-bottom: 10px;
 }
 
-.red { background-color: red; }
+.bg_red { background-color: red; }
 
-.green { background-color: green; }
+.red { color: red; }
+
+.bg_green { background-color: green; }
 
 /* Styles for fieldset */
 .fieldset_label {

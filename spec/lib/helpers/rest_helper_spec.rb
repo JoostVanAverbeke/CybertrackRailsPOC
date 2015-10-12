@@ -7,7 +7,7 @@ describe RestHelper do
   module RestHelperTest
     class DummyClass
 
-      def get(exception: false)
+      def get(exception = false)
         if exception
           raise HTTParty::Error
         end
@@ -25,7 +25,7 @@ describe RestHelper do
   it 'catch_exceptions raises a RemoteRestError when the given block raises an HTTParty::Error exception' do
     expect {
       dummy_object.catch_exceptions do
-        dummy_object.get(exception: true)
+        dummy_object.get(true)
       end
     }.to raise_error(RemoteRestError)
   end
