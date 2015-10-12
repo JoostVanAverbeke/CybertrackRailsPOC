@@ -1,2 +1,3 @@
-<h1>BloodSelections#index</h1>
-<p>Find me in app/views/blood_selections/index.html.erb</p>
+<h1><%= t('blood_selections.helpers.label.listing') %></h1>
+<h3><%= @patient.externalize %></h3>
+<%= render :partial => 'person_medical_record', locals: { patient: @patient } %>

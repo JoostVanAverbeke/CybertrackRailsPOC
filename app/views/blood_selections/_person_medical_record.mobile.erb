@@ -1,5 +1,5 @@
 <%= content_tag 'fieldset', data: { role: :collapsible, collapsed: false, theme: 'c'} do %>
-    <legend><%= t('patients.helpers.label.person_medical_record' %></legend>
+    <legend><%= t('patients.helpers.label.person_medical_record') %></legend>
     <% if patient.prsn_BloodGroupString %>
         <p><%= label_tag :prsn_BloodGroupString, t('patients.helpers.label.blood_group')%><%= patient.prsn_BloodGroupString %></p>
     <% end %>

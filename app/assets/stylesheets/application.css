@@ -22,3 +22,9 @@ form {
 .header {
     padding: 10px;
 }
+
+.red { color: red; }
+
+label {
+    font-weight: bold;
+}
