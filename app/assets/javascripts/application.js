@@ -24,3 +24,4 @@
 //= require locale/kendo.nl-BE
 //= require menu
 //= require patients
+//= require blood_selections
