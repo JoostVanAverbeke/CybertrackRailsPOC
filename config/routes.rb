@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'blood_selections/index'
-
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -67,5 +65,10 @@ Rails.application.routes.draw do
   resources :patients, only: [:index] do
     resources :blood_selections, only: [:index]
   end
+
+  resources :blood_bags, only: [:show] do
+    resources :blood_bag_attributes
+  end
+
   root to: "patients#index"
 end
