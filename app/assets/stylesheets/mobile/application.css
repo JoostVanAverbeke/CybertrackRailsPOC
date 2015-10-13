@@ -10,7 +10,7 @@
  *
  *= require_self
  *= require jquery.mobile
- *= require jquery_mobile/Cybertrack-POC.min
+ *= require jquery_mobile/cybertrack-poc-theme.min
  *= require jquery_mobile/jquery.mobile.icons.min
  *= require_tree .
  */
@@ -54,7 +54,7 @@ div.field, div.actions {
 
 /*background color of jquery mobile header*/
 .ui-page .ui-header {
-    background: #47d9bf;
+    background: #33ccff;
 }
 
 .nav-search .ui-btn-up-a {
