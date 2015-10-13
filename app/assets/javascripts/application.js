@@ -25,3 +25,7 @@
 //= require menu
 //= require patients
 //= require blood_selections
+// These javascript files are just added for the sake of spec/javascripts/foo_spec.js
+// They are NOT needed for the cybertrack POC project.
+//= require bar
+//= require foo
