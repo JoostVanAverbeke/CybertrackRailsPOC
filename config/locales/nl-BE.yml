@@ -3,6 +3,8 @@ nl-BE:
     helpers:
       label:
         back: 'Terug'
+      label:
+        save: 'Bewaar'
       languages:
         german: 'Duits'
         english: 'Engels'

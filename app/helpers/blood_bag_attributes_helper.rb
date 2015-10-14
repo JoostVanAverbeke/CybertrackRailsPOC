@@ -1,0 +1,2 @@
+module BloodBagAttributesHelper
+end

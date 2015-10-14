@@ -62,12 +62,14 @@ Rails.application.routes.draw do
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
 
+  get 'blood_selections/index'
+
   resources :patients, only: [:index] do
     resources :blood_selections, only: [:index]
   end
 
   resources :blood_bags, only: [:show] do
-    resources :blood_bag_attributes
+    resources :blood_bag_attributes, only: [:show, :index]
   end
 
   root to: "patients#index"

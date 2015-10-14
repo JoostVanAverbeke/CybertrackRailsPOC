@@ -1,4 +1,4 @@
-class BloodBagAttributeController < ApplicationController
+class BloodBagAttributesController < ApplicationController
   before_action :authenticate_user!, :basic_auth_credentials
   before_action :find_blood_bag
 
@@ -6,21 +6,18 @@ class BloodBagAttributeController < ApplicationController
   end
 
   def index
-  end
+    blood_bag_attributes_service = BloodBagAttributeService.new(session_login_user, session_password_user)
+    response = blood_bag_attributes_service.blood_bag_attributes(@blood_bag.bbag_Id)
+    if response.code == 200
+      @blood_bag_attributes = BloodBagAttributeDataSet.new(response).blood_bag_attributes
+    end
 
-  def new
-  end
-
-  def create
   end
 
   def edit
   end
 
   def update
-  end
-
-  def destroy
   end
 
   private
