@@ -1,0 +1,27 @@
+<h1>Editing blood bag attributes</h1>
+
+<%= form_for :blood_bag_attributes, :url => update_all_blood_bag_blood_bag_attributes_path, :html => { :method => :put, :multipart => true } do %>
+    <%= hidden_field_tag :before_blood_bag_attributes, @blood_bag_attributes.to_json %>
+    <table>
+      <tr>
+        <th>Start at</th>
+        <th>Name</th>
+        <th>Value</th>
+      </tr>
+      <% @blood_bag_attributes.each do |blood_bag_attribute| %>
+          <%= fields_for "blood_bag_attribute[]", blood_bag_attribute do |blood_bag_attribute_fields| %>
+              <tr>
+                <td><%= blood_bag_attribute.bbat_BloodAttrMinAfterStart %></td>
+                <td><%= blood_bag_attribute.bbat_BloodAttributeName %></td>
+                <td><%= blood_bag_attribute_fields.text_field :bbat_ExtraInfo %></td>
+              </tr>
+          <% end %>
+      <% end %>
+    </table>
+
+    <div class="actions">
+      <%= submit_tag %>
+    </div>
+<% end %>
+
+<%= link_to 'Back', blood_bag_blood_bag_attributes_path %>

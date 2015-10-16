@@ -1,2 +1,18 @@
-<h1>BloodBagAttibute#index</h1>
-<p>Find me in app/views/blood_bag_attibute/index.html.erb</p>
+<h1>Listing Blood Bag Attributes</h1>
+
+<table>
+  <tr>
+    <th>Start at</th>
+    <th>Name</th>
+    <th>Value</th>
+  </tr>
+  <% @blood_bag_attributes.each do |blood_bag_attribute| %>
+      <tr>
+        <td><%= blood_bag_attribute.bbat_BloodAttrMinAfterStart %></td>
+        <td><%= blood_bag_attribute.bbat_BloodAttributeName %></td>
+        <td><%= blood_bag_attribute.bbat_ExtraInfo %></td>
+      </tr>
+  <% end %>
+</table>
+
+<%= link_to "Edit Parameters", edit_all_blood_bag_blood_bag_attributes_path %>

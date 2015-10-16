@@ -69,7 +69,12 @@ Rails.application.routes.draw do
   end
 
   resources :blood_bags, only: [:show] do
-    resources :blood_bag_attributes, only: [:show, :index]
+    resources :blood_bag_attributes, only: [:show, :index] do
+      collection do
+        get :edit_all
+        put :update_all
+      end
+    end
   end
 
   root to: "patients#index"
