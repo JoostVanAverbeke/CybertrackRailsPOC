@@ -23,19 +23,13 @@ class BloodBagAttributesController < ApplicationController
   end
 
   def update_all
-    if params['before_blood_bag_attributes']
-      my_hash = JSON.parse(params['before_blood_bag_attributes'])
-      puts "my_hash = #{my_hash.inspect}"
-      before_blood_bag_attributes = []
-      my_hash.each do |blood_bag_attribute_hash|
-        before_blood_bag_attributes << BloodBagAttribute.new(blood_bag_attribute_hash)
-      end
-    end
-    puts "params = #{params['blood_bag_attribute'].inspect}"
-    puts "keys = #{params['blood_bag_attribute'].keys.inspect}"
-
+    before_blood_bag_attributes = convert_to_blood_bag_attributes(params['before_blood_bag_attributes'])
     params['blood_bag_attribute'].keys.each do |id|
       puts "id = #{id} params = #{params['blood_bag_attribute'][id]}"
+      blood_bag_attribute = before_blood_bag_attributes.select {
+          |blood_bag_attribute| blood_bag_attribute.id == id
+      }.first
+      blood_bag_attribute.update_attributes(params['blood_bag_attribute'][id])
       # update the user via the remote rest service
       # @user = User.find(id.to_i)
       # @user.update_attributes(params['user'][id])
@@ -50,6 +44,14 @@ class BloodBagAttributesController < ApplicationController
     response = blood_bag_service.find_by_id(params[:blood_bag_id])
     if response.code == 200
       @blood_bag = BloodBagDataSet.new(response).blood_bags.first
+    end
+  end
+
+  def convert_to_blood_bag_attributes(blood_bag_attributes_params)
+    blood_bag_attributes = []
+    blood_bag_attributes_hash = JSON.parse(blood_bag_attributes_params)
+    blood_bag_attributes_hash.each do |blood_bag_attribute_hash|
+      blood_bag_attributes << BloodBagAttribute.new(blood_bag_attribute_hash)
     end
   end
 end
