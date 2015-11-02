@@ -3,4 +3,9 @@
     <p><%= blood_selection.bsel_BloodGroupString %></p>
     <p><%= blood_selection.bsel_RhesusString %></p>
     <p><%= blood_selection.bsel_PositiveScreening %></p>
+    <% if blood_selection.bsel_BloodBag %>
+        <ul data-role="listview">
+          <li><%= link_to blood_selection.bsel_ProductMnemonic,  blood_bag_blood_bag_attributes_path(blood_selection.bsel_BloodBag) %></li>
+        </ul>
+    <% end %>
 <% end %>

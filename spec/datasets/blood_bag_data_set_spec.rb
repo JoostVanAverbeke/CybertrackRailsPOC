@@ -2,11 +2,11 @@ require 'rails_helper'
 
 describe BloodBagDataSet do
   let(:blood_bag_1) {
-    { "bbag_Id" =>  1, "bbag_BloodProduct" =>  456575, "bbag_BloodProductMnemonic" =>  "ERYTROCYT"}
+    { "bbag_Id" =>  1, "bbag_BloodProduct" =>  456575, "bbag_ProductMnemonic" =>  "ERYTROCYT"}
   }
 
   let(:blood_bag_2) {
-    { "bbag_Id" =>  2, "bbag_BloodProduct" =>  456573, "bbag_BloodProductMnemonic" =>  "SERUM"}
+    { "bbag_Id" =>  2, "bbag_BloodProduct" =>  456573, "bbag_ProductMnemonic" =>  "SERUM"}
   }
   let(:blood_bag_array) {
     [ blood_bag_1, blood_bag_2]

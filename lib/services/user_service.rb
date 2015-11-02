@@ -11,7 +11,7 @@ class UserService
   logger Rails.logger
 
   def initialize(user, password)
-    @auth = {username: user, password: password}
+    @auth = create_auth_hash(user, password)
   end
 
   def find(options = {})

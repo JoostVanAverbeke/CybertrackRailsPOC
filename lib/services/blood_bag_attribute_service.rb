@@ -7,18 +7,19 @@ class BloodBagAttributeService
   base_uri "#{RestHelper.rest_root_url}"
   default_timeout 3
   logger Rails.logger
+  debug_output $stderr if Rails.env.development?
 
   def initialize(user, password)
-    @auth = {username: user, password: password}
+    @auth = create_auth_hash(user, password)
   end
 
   def blood_bag_attributes(blood_bag_id, options = {})
     options.merge!({basic_auth: @auth})
     catch_exceptions do
-#      self.class.get("/bloodbags/#{blood_bag_id}/attributes?type=Parameter", options)
+     self.class.get("/bloodbags/#{blood_bag_id}/attributes?type=Parameter", options)
     end
-    #   TODO(JVA) Dummy implementation, since the Glims BTMService doesn't yet support this REST API
-    build_httparty_response(ds_blood_bag_attributes)
+    # TODO(JVA) Dummy implementation, since the Glims BTMService doesn't yet support this REST API
+    # build_httparty_response(ds_blood_bag_attributes)
 
   end
 

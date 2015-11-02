@@ -31,8 +31,8 @@ class BloodSelectionDataSet
   private
 
   def self.tt_blood_selection(httparty_response)
-    tt_user = []
-    tt_user = self.ds_blood_selections(httparty_response)['tt_BloodSelection'] if self.ds_blood_selections(httparty_response)
+    tt_blood_selection = []
+    tt_blood_selection = self.ds_blood_selections(httparty_response)['tt_BloodSelection'] if self.ds_blood_selections(httparty_response)
   end
 
   def self.ds_blood_selections(httparty_response)

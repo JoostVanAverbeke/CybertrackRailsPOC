@@ -43,17 +43,21 @@ RSpec.describe BloodBagAttributesController, type: :controller do
 
   describe 'PATCH #update_all nested blood bag attributes for blood bag' do
     describe "valid attributes" do
-      before(:each) do
-        the_blood_bag_attributes = [ blood_bag_attribute ]
+
+      let(:the_blood_bag_attributes) { [ blood_bag_attribute ]}
+      let(:update_all_blood_bag_attribute)  {
         patch :update_all, blood_bag_id: blood_bag_attribute.bbat_BloodBag,
               :blood_bag_attribute => {
                   blood_bag_attribute.to_param => FactoryGirl.attributes_for(:blood_bag_attribute, id: blood_bag_attribute.id, bbat_ExtraInfo: 99)
               },
               before_blood_bag_attributes: jsonify(the_blood_bag_attributes)
-      end
+      }
 
-      it "post the updated blood bag attributes data set to the remote rest service" do
-        expect(true).to eq(false)
+      it "puts the updated blood bag attributes data set to the remote rest service" do
+        blood_bag_attribute_service = class_double("BloodBagAttributeService")
+        allow(blood_bag_attribute_service).to receive(:put).with(any_args).and_return('joost')
+        expect(blood_bag_attribute_service).to receive(:put).exactly(1).times
+        update_all_blood_bag_attribute
       end
 
       it "redirects to the index view (list of blood bag attributes)" do

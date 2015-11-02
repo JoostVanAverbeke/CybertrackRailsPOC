@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def basic_auth_credentials
-    @http_basic_authorization = basic_http_encode(session[:user]['login'], session[:user]['password']) if current_user?
+    @http_basic_authorization = basic_http_encode("#{session[:user]['login']}@CyberTrack", session[:user]['password']) if current_user?
   end
 
   def set_session_locale
