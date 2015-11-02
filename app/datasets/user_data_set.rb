@@ -4,25 +4,38 @@ require 'httparty_response'
 class UserDataSet
   include HTTPartyResponse
 
-  attr_reader :response
+  attr_reader :users
 
-  def initialize(httparty_response)
-    @response = httparty_response
+  def self.parse(httparty_response)
+    users = []
+    if httparty_response.code == 200
+      self.tt_user(httparty_response).each {
+          |user_hash| users << User.new(user_hash)
+      }
+    end
+    self.new(users)
+  end
+
+  def initialize(users)
+    @users = users
   end
 
   def tt_user
-    ds_user['tt_User'] if http_ok?
+    { 'tt_User' => @users }
   end
 
   def ds_user
-    @response['dsUsers'] if http_ok?
+    { 'dsUsers' => tt_user }
   end
 
-  def users
-    if http_ok?
-      users = []
-      tt_user.each { |user_hash| users << User.new(user_hash) }
-      users
-    end
+  private
+
+  def self.tt_user(httparty_response)
+    tt_user = []
+    tt_user = self.ds_users(httparty_response)['tt_User'] if self.ds_users(httparty_response)
+  end
+
+  def self.ds_users(httparty_response)
+    httparty_response['dsUsers']
   end
 end

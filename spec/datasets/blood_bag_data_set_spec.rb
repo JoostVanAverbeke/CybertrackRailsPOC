@@ -20,18 +20,20 @@ describe BloodBagDataSet do
     {"dsBloodBags" => tt_blood_bag }
   }
 
-  let(:blood_bag_data_set) { BloodBagDataSet.new(build_httparty_response(ds_blood_bags))}
+  let(:blood_bag_data_set) { BloodBagDataSet.parse(build_httparty_response(ds_blood_bags))}
 
-  it 'returns \'dsBloodBags\' sub element from the httparty response' do
-    expect(blood_bag_data_set.ds_blood_bags).to eq(tt_blood_bag)
+  it 'returns \'dsBloodBags\' hash of this data set' do
+    expect(blood_bag_data_set.ds_blood_bags).not_to be_nil
+    expect(blood_bag_data_set.ds_blood_bags['dsBloodBags']).not_to be_nil
   end
 
-  it 'returns the \'tt_BloodBag\' sub element from the httparty response' do
-    expect(blood_bag_data_set.tt_blood_bag.length).to eq(2)
-    expect(blood_bag_data_set.tt_blood_bag).to eq(blood_bag_array)
+  it 'returns the \'tt_BloodBag\' hash of this data set' do
+    expect(blood_bag_data_set.tt_blood_bag).not_to be_nil
+    expect(blood_bag_data_set.tt_blood_bag['tt_BloodBag']).not_to be_nil
+    expect(blood_bag_data_set.tt_blood_bag['tt_BloodBag'].length).to eq(2)
   end
 
-  it 'returns an array of BloodBag model instances constructed from the json items in tt_BloodBag' do
+  it 'returns an array of BloodBag model instances' do
     expect(blood_bag_data_set.blood_bags).not_to be_nil
     expect(blood_bag_data_set.blood_bags.length).to eq(2)
     expect(blood_bag_data_set.blood_bags[0]).to be_an_instance_of(BloodBag)

@@ -1,7 +1,7 @@
 <h1>Editing blood bag attributes</h1>
 
 <%= form_for :blood_bag_attributes, :url => update_all_blood_bag_blood_bag_attributes_path, :html => { :method => :put, :multipart => true } do %>
-    <%= hidden_field_tag :before_blood_bag_attributes, @blood_bag_attributes.to_json %>
+    <%= hidden_field_tag :before_blood_bag_attributes, jsonify(@blood_bag_attributes) %>
     <table>
       <tr>
         <th>Start at</th>

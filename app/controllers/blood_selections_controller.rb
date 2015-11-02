@@ -6,7 +6,7 @@ class BloodSelectionsController < ApplicationController
     blood_selection_service = BloodSelectionService.new(session_login_user, session_password_user)
     response = blood_selection_service.blood_selections(@patient.prsn_Object)
     if response.code == 200
-      @blood_selections = BloodSelectionDataSet.new(response).blood_selections
+      @blood_selections = BloodSelectionDataSet.parse(response).blood_selections
     end
   end
 
@@ -19,7 +19,7 @@ class BloodSelectionsController < ApplicationController
     patient_service = PatientService.new(session_login_user, session_password_user)
     response = patient_service.find_by_id(params[:patient_id])
     if response.code == 200
-      @patient = PatientDataSet.new(response).patients.first
+      @patient = PatientDataSet.parse(response).patients.first
     end
   end
 end

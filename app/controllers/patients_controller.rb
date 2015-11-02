@@ -9,11 +9,9 @@ class PatientsController < ApplicationController
     if mobile_device? && current_user?
       patient_service = BloodSelectionService.new(session_login_user, session_password_user)
       response = patient_service.patients
-      if response.code == 200
-        patient_data_set = PatientDataSet.new(response)
-        @patients = patient_data_set.patients.sort_by! do |patient|
-          patient.prsn_Externalization
-        end
+      patient_data_set = PatientDataSet.parse(response)
+      @patients = patient_data_set.patients.sort_by! do |patient|
+        patient.prsn_Externalization
       end
     end
   end

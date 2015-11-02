@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
   def find_user(login, password)
     user_service = UserService.new(login, password)
     response = user_service.find(query: { LoginName: login})
-    user = User.new(UserDataSet.new(response).tt_user[0]) if response.code == 200
+    user = UserDataSet.parse(response).users.first
   end
 
   def mobile_device?

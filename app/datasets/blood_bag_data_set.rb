@@ -4,28 +4,39 @@ require 'httparty_response'
 class BloodBagDataSet
   include HTTPartyResponse
 
-  attr_reader :response
+  attr_reader :blood_bags
 
-  def initialize(httparty_response)
-    @response = httparty_response
+  def self.parse(httparty_response)
+    blood_bags = []
+    if httparty_response.code == 200
+      self.tt_blood_bag(httparty_response).each {
+          |blood_bag_hash| blood_bags << BloodBag.new(blood_bag_hash)
+      }
+    end
+    self.new(blood_bags)
+  end
+
+  def initialize(blood_bags)
+    @blood_bags = blood_bags
   end
 
   def tt_blood_bag
-    ds_blood_bags['tt_BloodBag'] if http_ok?
+    { 'tt_BloodBag' => @blood_bags.map { |blood_bag| blood_bag.serializable_hash} }
   end
 
   def ds_blood_bags
-    @response['dsBloodBags'] if http_ok?
+    { 'dsBloodBags' => tt_blood_bag }
   end
 
-  def blood_bags
-    if http_ok?
-      blood_bags = []
-      tt_blood_bag.each {
-          |blood_bag_hash| blood_bags << BloodBag.new(blood_bag_hash)
-      }
-      blood_bags
-    end
+  private
+
+  def self.tt_blood_bag(httparty_response)
+    tt_blood_bag = []
+    tt_blood_bag = self.ds_blood_bags(httparty_response)['tt_BloodBag'] if self.ds_blood_bags(httparty_response)
+  end
+
+  def self.ds_blood_bags(httparty_response)
+    httparty_response['dsBloodBags']
   end
 
 end

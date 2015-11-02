@@ -10,21 +10,24 @@ describe BloodBagAttribute do
                                                     })
   }
   it 'to_s returns the object_id of the blood_bag_attribute object' do
-    expect(blood_bag_attribute.to_s).to eq(blood_bag_attribute.object_id)
+    expect(blood_bag_attribute.to_s).to eq(blood_bag_attribute.object_id.to_s)
   end
 
   it 'to_json returns the json representation of the  blood_bag_attribute object' do
-    expect(blood_bag_attribute.to_json).to "\"bbat_Id\":1,\"bbat_BloodBag\":12345,\"bbat_BloodAttribute\":457349,\"bbat_BloodAttributeMnemonic\":\"HBEAT\",\"bbat_BloodAttributeName\":\"Hart Beat\""
+    expect(blood_bag_attribute.to_json).to match(/\"bbat_Id\":1,\"bbat_BloodBag\":12345,\"bbat_BloodAttribute\":457349,\"bbat_BloodAttributeMnemonic\":\"HBEAT\",\"bbat_BloodAttributeName\":\"Hart Beat\"/)
+  end
+
+  it 'to_json only serializes the attributes specified ' do
+    expect(blood_bag_attribute.to_json(only: [:bbat_Id, :bbat_BloodBag])).to eq("{\"bbat_Id\":1,\"bbat_BloodBag\":12345}")
+  end
+
+  it 'to_json serializes all attributes except the one specified' do
+    expect(blood_bag_attribute.to_json(except: [:id, :bbat_Id, :bbat_BloodBag, :bbat_BloodAttribute, ])).to eq("{\"bbat_BloodAttributeMnemonic\":\"HBEAT\",\"bbat_BloodAttributeName\":\"Hart Beat\",\"bbat_BloodAttrMinAfterStart\":null,\"bbat_BloodAttributeIsMandatory\":null,\"bbat_ExtraInfo\":null,\"bbat_Present\":null}")
   end
 
   it 'updates the value of specified string representation of the attribute if it is known' do
     blood_bag_attribute.update_attribute('bbat_ExtraInfo', '120')
     expect(blood_bag_attribute.bbat_ExtraInfo).to eq('120')
-  end
-
-  it 'updates the value of specified symbol representation of the attribute if it is known' do
-    blood_bag_attribute.update_attribute(:bbat_ExtraInfo, '24.7')
-    expect(blood_bag_attribute.bbat_ExtraInfo).to eq('24.7')
   end
 
   it 'updates the value of specified symbol representation of the attribute if it is known' do

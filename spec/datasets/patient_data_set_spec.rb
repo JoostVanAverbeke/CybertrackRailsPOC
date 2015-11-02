@@ -21,18 +21,20 @@ describe PatientDataSet do
     {"dsPatients" => tt_person }
   }
 
-  let(:patient_data_set) { PatientDataSet.new(build_httparty_response(ds_patients))}
+  let(:patient_data_set) { PatientDataSet.parse(build_httparty_response(ds_patients))}
 
-  it 'returns \'dsPatients\' sub element from the httparty response' do
-    expect(patient_data_set.ds_patient).to eq(tt_person)
+  it 'returns \'dsPatients\' hash of this data set' do
+    expect(patient_data_set.ds_patient).not_to be_nil
+    expect(patient_data_set.ds_patient['dsPatients']).not_to be_nil
   end
 
-  it 'returns the \'tt_Person\' sub element from the httparty response' do
-    expect(patient_data_set.tt_person.length).to eq(3)
-    expect(patient_data_set.tt_person).to eq([person_lexus, person_kari, person_douglas])
+  it 'returns the \'tt_Person\' hash of this data set' do
+    expect(patient_data_set.tt_person).not_to be_nil
+    expect(patient_data_set.tt_person['tt_Person']).not_to be_nil
+    expect(patient_data_set.tt_person['tt_Person'].length).to eq(3)
   end
 
-  it 'returns an array of Patient model instances constructed from the json items in tt_Person' do
+  it 'returns an array of Patient model instances' do
     expect(patient_data_set.patients).not_to be_nil
     expect(patient_data_set.patients.length).to eq(3)
     expect(patient_data_set.patients[0]).to be_an_instance_of(Patient)

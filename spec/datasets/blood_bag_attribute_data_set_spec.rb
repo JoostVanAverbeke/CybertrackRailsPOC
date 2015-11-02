@@ -75,18 +75,21 @@ describe BloodBagAttributeDataSet do
     {"dsBloodBagAttributes" => tt_blood_bag_attribute }
   }
 
-  let(:blood_bag_attribute_data_set) { BloodBagAttributeDataSet.new(build_httparty_response(ds_blood_bag_attributes))}
+  let(:blood_bag_attribute_data_set) { BloodBagAttributeDataSet.parse(build_httparty_response(ds_blood_bag_attributes))}
 
-  it 'returns \'dsBloodBagAttributes\' sub element from the httparty response' do
-    expect(blood_bag_attribute_data_set.ds_blood_bag_attributes).to eq(tt_blood_bag_attribute)
+  it 'returns \'dsBloodBagAttributes\' hash of this data set' do
+    expect(blood_bag_attribute_data_set.ds_blood_bag_attributes).not_to be_nil
+    expect(blood_bag_attribute_data_set.ds_blood_bag_attributes['dsBloodBagAttributes']).not_to be_nil
   end
 
-  it 'returns the \'tt_BloodBagAttribute\' sub element from the httparty response' do
-    expect(blood_bag_attribute_data_set.tt_blood_bag_attribute.length).to eq(14)
-    expect(blood_bag_attribute_data_set.tt_blood_bag_attribute).to eq(blood_bag_attribute_array)
+  it 'returns the \'tt_BloodBagAttribute\' hash of this data set' do
+    expect(blood_bag_attribute_data_set.tt_blood_bag_attribute).not_to be_nil
+    expect(blood_bag_attribute_data_set.tt_blood_bag_attribute['tt_BloodBagAttribute']).not_to be_nil
+    expect(blood_bag_attribute_data_set.tt_blood_bag_attribute['tt_BloodBagAttribute'].length).to eq(14)
+
   end
 
-  it 'returns an array of BloodBagAttribute model instances constructed from the json items in tt_BloodBagAttribute' do
+  it 'returns an array of BloodBagAttribute model instances' do
     expect(blood_bag_attribute_data_set.blood_bag_attributes).not_to be_nil
     expect(blood_bag_attribute_data_set.blood_bag_attributes.length).to eq(14)
     expect(blood_bag_attribute_data_set.blood_bag_attributes[0]).to be_an_instance_of(BloodBagAttribute)

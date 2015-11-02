@@ -12,14 +12,18 @@ describe UserDataSet do
     { "dsUsers"=> tt_user }
   }
 
-  let(:user_data_set) { UserDataSet.new(build_httparty_response(ds_users))}
+  let(:user_data_set) { UserDataSet.parse(build_httparty_response(ds_users))}
 
-  it 'returns \'dsUsers\' sub element from the httparty response' do
-    expect(user_data_set.ds_user).to eq(tt_user)
+  it 'returns \'dsUsers\' hash  of this data set' do
+    expect(user_data_set.ds_user).not_to be_nil
+    expect(user_data_set.ds_user['dsUsers']).not_to be_nil
   end
 
-  it 'returns the \'tt_User\' sub element from the httparty response' do
-    expect(user_data_set.tt_user[0]).to eq(user_bar)
+  it 'returns the \'tt_User\' hash of this data set' do
+    expect(user_data_set.tt_user).not_to be_nil
+    expect(user_data_set.tt_user['tt_User']).not_to be_nil
+    expect(user_data_set.tt_user['tt_User'].length).to eq(1)
+    expect(user_data_set.tt_user['tt_User'][0]).to be_an_instance_of(User)
   end
 
   it 'returns an array of User model instances constructed from the json items in tt_User' do

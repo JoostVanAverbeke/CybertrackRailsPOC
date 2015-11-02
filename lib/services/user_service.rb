@@ -8,6 +8,7 @@ class UserService
 
   base_uri "#{RestHelper.rest_root_url}"
   default_timeout 3
+  logger Rails.logger
 
   def initialize(user, password)
     @auth = {username: user, password: password}

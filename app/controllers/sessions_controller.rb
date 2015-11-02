@@ -5,8 +5,8 @@ class SessionsController < ApplicationController
   def create
     user_service = UserService.new(params[:login], params[:password])
     response = user_service.find(query: { LoginName: params[:login]})
-    if response.code == 200
-      login_user = UserDataSet.new(response).users.first
+    login_user = UserDataSet.parse(response).users.first
+    if login_user
       session[:user] = { login: params[:login], password: params[:password], locale: params[:language] }
       I18n.locale = params[:language] if params[:language]
       redirect_to root_url, :notice => I18n.t('signin.sessions.logged_in')
