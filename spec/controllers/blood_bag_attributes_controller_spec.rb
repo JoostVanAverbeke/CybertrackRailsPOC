@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe BloodBagAttributesController, type: :controller do
+
+  include BloodBagAttributesHelper
+
   let(:blood_bags) { [ FactoryGirl.build(:blood_bag)]}
   let(:blood_bag_attribute) { FactoryGirl.build(:blood_bag_attribute) }
   let(:blood_bag_attributes) { [
