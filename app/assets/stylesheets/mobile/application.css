@@ -38,6 +38,12 @@ div.field, div.actions {
 
 .bg_green { background-color: green; }
 
+/* Style the label tag similar to the iphone blue and in a smaller font */
+label {
+    color: blue;
+    font: 11px Calibri,Arial !important;
+}
+
 /* Styles for fieldset */
 .fieldset_label {
     font-weight:bold;

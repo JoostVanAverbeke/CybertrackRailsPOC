@@ -1,4 +1,35 @@
 <%= content_tag 'fieldset', data: { role: :collapsible, collapsed: false, theme: 'b'} do %>
     <legend><%= t('blood_bags.helpers.label.blood_bag') %></legend>
-    <p>Product <%= blood_bag.externalize %></p>
+    <p>
+      <%= label_tag :bbag_blood_group, 'Blood group' %>
+      <%= blood_bag.blood_group %>
+    </p>
+    <p>
+      <%= label_tag :bbag_blood_product, 'Blood product' %>
+      <%= blood_bag.externalize %>
+    </p>
+    <p>
+      <%= label_tag :bbag_antigens, 'Antigens' %>
+      <%= blood_bag.bbag_AntigenList %>
+    </p>
+    <p>
+      <%= label_tag :bbag_status, 'Status' %>
+      <%= blood_bag.bbag_StatusString %>
+    </p>
+    <p>
+      <%= label_tag :bbag_checkout_time, 'Checked out' %>
+      <%= blood_bag.bbag_CheckOutTime %>
+    </p>
+    <p>
+      <%= label_tag :bbag_checkout_ward_mnemonic, 'Location' %>
+      <%= blood_bag.bbag_CheckOutWardMnemonic %>
+    </p>
+    <p>
+      <%= label_tag :bbag_expiration_time, 'Expires' %>
+      <%= blood_bag.bbag_ExpirationTime %>
+    </p>
+    <p>
+      <%= label_tag :bbag_transfusion_hcprovider_fullname, 'Responsible HC provider' %>
+      <%= blood_bag.bbag_TransfusionHCPrFullName %>
+    </p>
 <% end %>

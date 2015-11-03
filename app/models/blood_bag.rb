@@ -75,6 +75,10 @@ class BloodBag
   end
 
   def externalize
-    bbag_ProductMnemonic
+    "#{bbag_ProductMnemonic}"
+  end
+
+  def blood_group
+    "#{bbag_BloodGroupString} #{bbag_RhesusString}"
   end
 end
