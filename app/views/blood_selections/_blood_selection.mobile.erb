@@ -5,7 +5,10 @@
     <p><%= blood_selection.bsel_PositiveScreening %></p>
     <% if blood_selection.bsel_BloodBag %>
         <ul data-role="listview">
-          <li><%= link_to blood_selection.bsel_ProductMnemonic,  blood_bag_blood_bag_attributes_path(blood_selection.bsel_BloodBag) %></li>
+          <li>
+            <%= link_to blood_selection.bsel_ProductMnemonic,
+                          blood_bag_blood_bag_attributes_path(blood_selection.bsel_BloodBag, patient_id: patient_id) %>
+          </li>
         </ul>
     <% end %>
 <% end %>

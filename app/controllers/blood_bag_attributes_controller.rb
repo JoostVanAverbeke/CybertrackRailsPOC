@@ -6,6 +6,7 @@ class BloodBagAttributesController < ApplicationController
   end
 
   def index
+    @patient_id = params['patient_id']
     response = @blood_bag_attribute_service.blood_bag_attributes(@blood_bag.bbag_Id)
     if response.code == 200
       @blood_bag_attributes = BloodBagAttributeDataSet.parse(response).blood_bag_attributes

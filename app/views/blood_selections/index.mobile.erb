@@ -12,7 +12,7 @@
     <ul data-role="listview" data-inset="true">
       <% @blood_selections.each do |blood_selection| %>
           <li>
-            <%= render :partial => 'blood_selection', locals: { blood_selection: blood_selection } %>
+            <%= render :partial => 'blood_selection', locals: { blood_selection: blood_selection, patient_id: @@patient.prsn_Id } %>
           </li>
       <% end %>
     </ul>

@@ -18,7 +18,7 @@
   <div data-role="navbar">
     <ul>
       <li>
-        <%= link_to blood_bag_path @blood_bag, class: :anchorButton do %>
+        <%= link_to @patient_id ? patient_blood_selections_path(@patient_id) : patients_path, class: :anchorButton do %>
             <%= image_tag('black/back.png', class: 'button_image_text') %>
             <%= t('application.helpers.label.back') %>
         <% end %>
