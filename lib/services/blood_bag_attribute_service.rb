@@ -25,10 +25,14 @@ class BloodBagAttributeService
 
   def put_blood_bag_attribute_data_set(blood_bag_id, blood_bag_attribute_data_set)
     options = {
+        headers: {
+            'Content-Type' => 'application/json'
+        },
         body: {
             request: blood_bag_attribute_data_set.ds_blood_bag_attributes
-        }
+        }.to_json
     }
+    options.merge!({basic_auth: @auth})
     BloodBagAttributeService.put("/bloodbags/#{blood_bag_id}/attributes", options)
   end
 

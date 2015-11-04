@@ -16,4 +16,8 @@ class Patient
     prsn_Externalization
   end
 
+  def blood_group
+    prsn_RhesusString ? "#{prsn_BloodGroupString} #{prsn_RhesusString}" : prsn_BloodGroupString
+  end
+
 end

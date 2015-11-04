@@ -48,6 +48,9 @@ class BloodBagAttribute
     attributes.each do |name, value|
       update_attribute(name, value)
     end
+    if bbat_ExtraInfo
+       @bbat_Present = true
+    end
   end
 
   def update_attribute(name, value)

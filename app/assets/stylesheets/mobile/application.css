@@ -41,7 +41,7 @@ div.field, div.actions {
 /* Style the label tag similar to the iphone blue and in a smaller font */
 label {
     color: blue;
-    font: 11px Calibri,Arial !important;
+    font: 13px Calibri,Arial !important;
 }
 
 /* Styles for fieldset */

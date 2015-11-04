@@ -2,16 +2,9 @@
     <legend><%= t('patients.helpers.label.person_medical_record') %></legend>
     <%= render :partial => 'person_medical_record_field',
                locals: {
-                       field: patient.prsn_BloodGroupString,
-                       tag: :prsn_BloodGroupString,
+                       field: patient.blood_group,
+                       tag: :prsn_blood_group,
                        label: t('patients.helpers.label.blood_group'),
-                       class_attribute: nil
-               } %>
-    <%= render :partial => 'person_medical_record_field',
-               locals: {
-                       field: patient.prsn_RhesusString,
-                       tag: :prsn_RhesusString,
-                       label: t('patients.helpers.label.rhesus'),
                        class_attribute: nil
                } %>
     <%= render :partial => 'person_medical_record_field',

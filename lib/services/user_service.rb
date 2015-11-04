@@ -9,6 +9,7 @@ class UserService
   base_uri "#{RestHelper.rest_root_url}"
   default_timeout 3
   logger Rails.logger
+  debug_output $stderr if Rails.env.development?
 
   def initialize(user, password)
     @auth = create_auth_hash(user, password)
