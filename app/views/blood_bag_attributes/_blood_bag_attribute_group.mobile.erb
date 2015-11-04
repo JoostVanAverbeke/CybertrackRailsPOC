@@ -3,7 +3,7 @@
     <% attributes.each do |blood_bag_attribute| %>
             <div>
                 <%= label_tag :externalize, blood_bag_attribute.externalize %>
-                <%= text_field_tag :bbat_ExtraInfo, nil, autofocus: true %>
+                <%= blood_bag_attribute.bbat_ExtraInfo %>
             </div>
     <% end %>
 <% end %>
