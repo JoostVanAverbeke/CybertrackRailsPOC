@@ -24,7 +24,7 @@
         <% end %>
       </li>
       <li>
-        <%= link_to edit_all_blood_bag_blood_bag_attributes_path @blood_bag, class: :anchorButton do %>
+        <%= link_to edit_all_blood_bag_blood_bag_attributes_path @blood_bag.bbag_Id do %>
             <%= image_tag('black/edit.png', class: 'button_image_text') %>
             <%= t('application.helpers.label.edit') %>
         <% end %>

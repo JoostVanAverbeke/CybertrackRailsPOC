@@ -6,26 +6,41 @@
     <%= render :partial => 'blood_bag', locals: { blood_bag: @blood_bag } %>
   </div>
   <div id="blood_bag_attributes_container">
-    <ul data-role="listview" data-inset="true">
-      <%= form_for :blood_bag_attributes, :url => update_all_blood_bag_blood_bag_attributes_path, :html => { :method => :put, :multipart => true } do %>
+    <%= form_for :blood_bag_attributes, :url => update_all_blood_bag_blood_bag_attributes_path, :html => { :method => :put, :multipart => true } do %>
         <%= hidden_field_tag :before_blood_bag_attributes, jsonify(@blood_bag_attributes) %>
+        <div data-role="tabs">
+          <div data-role="navbar">
+            <ul>
+              <% grouper = BloodBagAttributesGrouper.new(@blood_bag_attributes) %>
+              <% grouper.groups.each do |group| %>
+                <li><a href="#<%= group[:label] %>" data-theme="c" data-ajax="false"><%= group[:label] %></a></li>
+              <% end %>
+            </ul>
+          </div>
           <% grouper = BloodBagAttributesGrouper.new(@blood_bag_attributes) %>
           <% grouper.groups.each do |group| %>
-              <li>
-                <%= render :partial => 'edit_blood_bag_attribute_group', locals: { group: group, attributes: grouper.blood_bag_attributes(group[:key]) } %>
-              </li>
+            <div id="<%= group[:label] %>" class="ui-content">
+              <h1>Parameters</h1>
+              <ul data-role="listview">
+                <% grouper.blood_bag_attributes(group[:key]).each do |blood_bag_attribute| %>
+                    <li>
+                          <%= label_tag :externalize, blood_bag_attribute.externalize %>
+                          <%= blood_bag_attribute.bbat_ExtraInfo %>
+                    </li>
+                <% end %>
+              </ul>
+            </div>
           <% end %>
-
+        </div>
         <div class="actions">
           <%= submit_tag %>
         </div>
-      <% end %>
-    </ul>
+    <% end %>
   </div>
   <div data-role="navbar">
     <ul>
       <li>
-        <%= link_to blood_bag_blood_bag_attributes_path class: :anchorButton do %>
+        <%= link_to blood_bag_blood_bag_attributes_path do %>
             <%= image_tag('black/back.png', class: 'button_image_text') %>
             <%= t('application.helpers.label.back') %>
         <% end %>
