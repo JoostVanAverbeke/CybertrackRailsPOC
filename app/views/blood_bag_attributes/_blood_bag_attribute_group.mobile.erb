@@ -1,5 +1,5 @@
 <%= content_tag 'fieldset', data: { role: :collapsible, collapsed: false, theme: 'c' } do %>
-    <legend><%= group[:label] %></legend>
+    <legend><%= group.label %></legend>
     <% attributes.each do |blood_bag_attribute| %>
             <div>
                 <%= label_tag :externalize, blood_bag_attribute.externalize %>

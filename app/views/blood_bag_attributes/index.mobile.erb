@@ -6,14 +6,29 @@
     <%= render :partial => 'blood_bag', locals: { blood_bag: @blood_bag } %>
   </div>
   <div id="blood_bag_attributes_container">
-    <ul data-role="listview" data-inset="true">
-      <% grouper = BloodBagAttributesGrouper.new(@blood_bag_attributes) %>
+    <% grouper = BloodBagAttributesGrouper.new(@blood_bag_attributes) %>
+    <div data-role="tabs">
+      <div data-role="navbar">
+        <ul>
+          <% grouper.groups.each do |group| %>
+              <li><%= link_to group.label, anchor_href(group.label), {data: { theme: 'c', ajax: false}} %></li>
+          <% end %>
+        </ul>
+      </div>
       <% grouper.groups.each do |group| %>
-          <li>
-            <%= render :partial => 'blood_bag_attribute_group', locals: { group: group, attributes: grouper.blood_bag_attributes(group[:key]) } %>
-          </li>
+          <div id="<%= group.label %>" class="ui-content">
+            <h2><%= parameters_label(group.label) %></h2>
+            <ul data-role="listview">
+              <% group.attributes.each do |blood_bag_attribute| %>
+                  <li>
+                    <%= label_tag :externalize, blood_bag_attribute.externalize %>
+                    <%= blood_bag_attribute.bbat_ExtraInfo %>
+                  </li>
+              <% end %>
+            </ul>
+          </div>
       <% end %>
-    </ul>
+    </div>
   </div>
   <div data-role="navbar">
     <ul>

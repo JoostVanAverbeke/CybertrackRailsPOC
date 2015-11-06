@@ -73,7 +73,10 @@ describe BloodBagAttributesGrouper do
     expect(blood_bag_attributes_grouper.groups.length).to eq(6)
   end
 
-  it 'returns the blood_bag_attributes that match the specified \'after start\' field' do
-    expect(blood_bag_attributes_grouper.blood_bag_attributes(15).length).to eq(4)
+  it 'the created group with key (15) has got 4 attributes' do
+    groups = blood_bag_attributes_grouper.groups
+    group_15 = groups.select {|group| group.key == 15 }.first
+    expect(group_15.attributes.length).to eq(4)
   end
+
 end
