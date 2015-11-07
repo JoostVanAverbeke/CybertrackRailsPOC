@@ -14,16 +14,29 @@
 //= require jquery_ujs
 //= require jquery.mobile
 ///= require_directory .
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
 
-//$(document).ajaxSend(function(e, xhr, options) {
-//    var token = $("meta[name='csrf-token']").attr("content");
-//    xhr.setRequestHeader("X-CSRF-Token", token);
-//});
-//
-//$(function(){
-//    $(document.body).delegate("form[action='/users/sign_out']",'submit',function(e){
-//        $(this).attr("data-ajax", "false");
-//    });
-//});
+// WORK AROUND FOR ISSUE:
+// Tabs widget exhibits odd behavior when it's on a page that is linked to
+// see also https://github.com/jquery/jquery-mobile/issues/7169
+$.widget( "ui.tabs", $.ui.tabs, {
+
+    _createWidget: function( options, element ) {
+        var page, delayedCreate,
+            that = this;
+
+        if ( $.mobile.page ) {
+            page = $( element )
+                .parents( ":jqmData(role='page'),:mobile-page" )
+                .first();
+
+            if ( page.length > 0 && !page.hasClass( "ui-page-active" ) ) {
+                delayedCreate = this._super;
+                page.one( "pagebeforeshow", function() {
+                    delayedCreate.call( that, options, element );
+                });
+            }
+        } else {
+            return this._super();
+        }
+    }
+});

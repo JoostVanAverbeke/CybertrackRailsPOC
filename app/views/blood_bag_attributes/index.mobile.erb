@@ -10,15 +10,19 @@
     <div data-role="tabs">
       <div data-role="navbar">
         <ul>
-          <% grouper.groups.each do |group| %>
-              <li><%= link_to group.label, anchor_href(group.label), {data: { theme: 'c', ajax: false } } %></li>
+          <% grouper.groups.each_with_index do |group, index| %>
+              <% if index == 0 %>
+                <li><%= link_to group.label, anchor_href(group.label), { data: { theme: 'c', ajax: false }, class: 'ui-btn-active'} %></li>
+              <% else %>
+                  <li><%= link_to group.label, anchor_href(group.label), { data: { theme: 'c', ajax: false } } %></li>
+              <% end %>
           <% end %>
         </ul>
       </div>
       <% grouper.groups.each do |group| %>
-          <div id="<%= group.label %>" class="ui-content">
+          <div id="<%= group.label %>">
             <h2><%= parameters_label(group.label) %></h2>
-            <ul data-role="listview">
+            <ul data-role="listview" data-inset="true">
               <% group.attributes.each do |blood_bag_attribute| %>
                   <li>
                     <%= label_tag :externalize, blood_bag_attribute.externalize %>

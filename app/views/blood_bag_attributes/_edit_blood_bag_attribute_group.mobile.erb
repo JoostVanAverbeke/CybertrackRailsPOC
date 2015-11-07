@@ -1,5 +1,5 @@
 <h2><%= parameters_label(group.label) %></h2>
-<ul data-role="listview">
+<ul data-role="listview" data-inset="true">
   <% group.attributes.each do |blood_bag_attribute| %>
       <%= fields_for "blood_bag_attribute[]", blood_bag_attribute do |blood_bag_attribute_fields| %>
           <div>
