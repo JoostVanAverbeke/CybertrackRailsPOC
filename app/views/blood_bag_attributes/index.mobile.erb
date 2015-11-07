@@ -11,7 +11,7 @@
       <div data-role="navbar">
         <ul>
           <% grouper.groups.each do |group| %>
-              <li><%= link_to group.label, anchor_href(group.label), {data: { theme: 'c', ajax: false}} %></li>
+              <li><%= link_to group.label, anchor_href(group.label), {data: { theme: 'c', ajax: false } } %></li>
           <% end %>
         </ul>
       </div>

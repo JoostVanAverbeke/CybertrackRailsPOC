@@ -11,7 +11,7 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe BloodBagAttributesHelper, type: :helper do
-  it 'returns the href format \"#<label>i\" for the specified label' do
-    expect(helper.anchor_href('label')).to eq('"#label"')
+  it 'returns the href format: #<label> for the specified label' do
+    expect(helper.anchor_href('label')).to eq('#label')
   end
 end

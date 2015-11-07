@@ -8,6 +8,6 @@ module BloodBagAttributesHelper
   end
 
   def anchor_href(label)
-    "\"\##{label}\""
+    "\##{label}"
   end
 end

@@ -8,28 +8,19 @@
   <div id="blood_bag_attributes_container">
     <%= form_for :blood_bag_attributes, :url => update_all_blood_bag_blood_bag_attributes_path, :html => { :method => :put, :multipart => true } do %>
         <%= hidden_field_tag :before_blood_bag_attributes, jsonify(@blood_bag_attributes) %>
+        <% grouper = BloodBagAttributesGrouper.new(@blood_bag_attributes) %>
         <div data-role="tabs">
           <div data-role="navbar">
             <ul>
-              <% grouper = BloodBagAttributesGrouper.new(@blood_bag_attributes) %>
               <% grouper.groups.each do |group| %>
-                <li><a href="#<%= group[:label] %>" data-theme="c" data-ajax="false"><%= group[:label] %></a></li>
+                  <li><%= link_to group.label, anchor_href(group.label), {data: { theme: 'c', ajax: false } } %></li>
               <% end %>
             </ul>
           </div>
-          <% grouper = BloodBagAttributesGrouper.new(@blood_bag_attributes) %>
           <% grouper.groups.each do |group| %>
-            <div id="<%= group[:label] %>" class="ui-content">
-              <h1>Parameters</h1>
-              <ul data-role="listview">
-                <% grouper.blood_bag_attributes(group[:key]).each do |blood_bag_attribute| %>
-                    <li>
-                          <%= label_tag :externalize, blood_bag_attribute.externalize %>
-                          <%= blood_bag_attribute.bbat_ExtraInfo %>
-                    </li>
-                <% end %>
-              </ul>
-            </div>
+              <div id="<%= group.label %>" class="ui-content">
+                <%= render :partial => 'edit_blood_bag_attribute_group', locals: { group: group } %>
+              </div>
           <% end %>
         </div>
         <div class="actions">
