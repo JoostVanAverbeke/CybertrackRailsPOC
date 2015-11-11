@@ -1,0 +1,34 @@
+<div data-role="header">
+  <h2><%= t('blood_bag_attributes.helpers.label.listing') %></h2>
+</div>
+<div data-role="content">
+  <div class="ui-body ui-body-a">
+    <%= render :partial => 'blood_bag', locals: { blood_bag: blood_bag } %>
+  </div>
+  <div id="blood_bag_attributes_container">
+    <h2>Parameters</h2>
+    <% grouper = BloodBagAttributesGrouper.new(blood_bag_attributes) %>
+    <div data-role="tabs">
+      <%= render partial: 'blood_bag_attributes/tabs_inset_listview/group_listview', locals: { grouper: grouper} %>
+      <% grouper.groups.each do |group| %>
+        <%= render partial: 'blood_bag_attributes/tabs_inset_listview/blood_bag_attribute_group', locals: { group: group} %>
+      <% end %>
+    </div>
+  </div>
+  <div data-role="navbar">
+    <ul>
+      <li>
+        <%= link_to patient_id ? patient_blood_selections_path(patient_id) : patients_path, class: :anchorButton do %>
+            <%= image_tag('black/back.png', class: 'button_image_text') %>
+            <%= t('application.helpers.label.back') %>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to edit_all_blood_bag_blood_bag_attributes_path blood_bag.bbag_Id do %>
+            <%= image_tag('black/edit.png', class: 'button_image_text') %>
+            <%= t('application.helpers.label.edit') %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>

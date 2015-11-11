@@ -4,7 +4,7 @@ module BloodBagAttributesHelper
   end
 
   def parameters_label(label)
-    "Parameters: #{label}"
+    "#{label}"
   end
 
   def anchor_href(label)

@@ -59,4 +59,8 @@ class BloodBagAttribute
     send("#{name}=", value)
   end
 
+  def is_integer?
+    bbat_BloodAttributeMnemonic.start_with?('HBEAT') if bbat_BloodAttributeMnemonic
+  end
+
 end

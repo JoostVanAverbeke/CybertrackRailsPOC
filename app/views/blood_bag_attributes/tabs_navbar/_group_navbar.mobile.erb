@@ -1,0 +1,11 @@
+<div data-role="navbar">
+  <ul>
+    <% grouper.groups.each_with_index do |group, index| %>
+        <% if index == 0 %>
+            <li><%= link_to group.label, anchor_href(group.label), { data: { theme: 'c', ajax: false }, class: 'ui-btn-active'} %></li>
+        <% else %>
+            <li><%= link_to group.label, anchor_href(group.label), { data: { theme: 'c', ajax: false } } %></li>
+        <% end %>
+    <% end %>
+  </ul>
+</div>

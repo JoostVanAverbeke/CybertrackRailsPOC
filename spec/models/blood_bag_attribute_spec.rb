@@ -41,4 +41,19 @@ describe BloodBagAttribute do
     }.to raise_error(NoMethodError)
   end
 
+  it 'is_integer? returns true if the bbat_BloodAttributeMnemonic of the blood bag attribute starts with HBEAT' do
+    expect(blood_bag_attribute.is_integer?).to be_truthy
+  end
+
+  it 'is_integer? returns false if the bbat_BloodAttributeMnemonic of the blood bag attribute does not start with HBEAT' do
+    blood_bag_attribute.bbat_BloodAttributeMnemonic = 'COLOR'
+    expect(blood_bag_attribute.is_integer?).to be_falsey
+  end
+
+  it 'is_integer? returns false if the bbat_BloodAttributeMnemonic of the blood bag attribute is nil' do
+    blood_bag_attribute.bbat_BloodAttributeMnemonic = nil
+    expect(blood_bag_attribute.is_integer?).to be_falsey
+  end
+
+
 end

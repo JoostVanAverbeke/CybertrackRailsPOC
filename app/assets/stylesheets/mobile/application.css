@@ -72,6 +72,17 @@ label {
     border-color: rgba(255, 255, 255, .1);
 }
 
+.tablist-left {
+    width: 25%;
+    display: inline-block;
+}
+
+.tablist-content {
+    width: 60%;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 5%;
+}
 /* center img tag in the parent div */
 img.center {
     display: block;
