@@ -1,0 +1,5 @@
+nl-BE:
+  blood_bag_attributes:
+    helpers:
+      label:
+        listing: 'Bloedzak Parameters'

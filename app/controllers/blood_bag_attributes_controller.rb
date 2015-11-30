@@ -3,6 +3,11 @@ class BloodBagAttributesController < ApplicationController
   before_action :find_blood_bag, :setup_blood_bag_attribute_service
 
   def show
+    response = @blood_bag_attribute_service.blood_bag_attributes(@blood_bag.bbag_Id)
+    if response.code == 200
+      @blood_bag_attributes = BloodBagAttributeDataSet.parse(response).blood_bag_attributes
+    end
+    render layout: 'blood_bag_attributes' if mobile_device?
   end
 
   def index
@@ -10,8 +15,10 @@ class BloodBagAttributesController < ApplicationController
     response = @blood_bag_attribute_service.blood_bag_attributes(@blood_bag.bbag_Id)
     if response.code == 200
       @blood_bag_attributes = BloodBagAttributeDataSet.parse(response).blood_bag_attributes
+    else
+      Rails.logger.error "HTTP response code = #{response.code}"
     end
-
+    render layout: 'blood_bag_attributes' if mobile_device?
   end
 
   def edit_all

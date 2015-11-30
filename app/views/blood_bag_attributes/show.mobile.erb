@@ -1,0 +1,51 @@
+<div id="mobile_page" data-role="page" data-theme="a">
+
+  <%= render "shared/header" %>
+  <div data-role="main" class="ui-content">
+
+    <p>Click on the link to see the flip effect.</p>
+    <a href="#pagetwo" data-transition="flip">Flip to Dialog Page</a>
+    <%= jqplot(100, 200, [[1, 2, 3, 4], [4, 3, 2, 1]]) %>
+  </div>
+
+  <div data-role="footer">
+    <h1>Footer Text</h1>
+  </div>
+</div>
+
+<div data-role="page" data-dialog="true" id="pagetwo">
+  <div data-role="header">
+    <h1>I'm A Dialog Box!</h1>
+  </div>
+
+  <div data-role="main" class="ui-content">
+    <p>Click on the link to go to Page One. <b>Note</b>: fade is default.</p>
+    <a href="#mobile_page">Go to Page One</a>
+    <section data-role="content">
+      <div id="chart_div"></div>
+    </section>
+    </p>
+  </div>
+  <div data-role="footer">
+    <h1>Footer Text in Dialog</h1>
+  </div>
+</div>
+<script>
+  $(document).on("pageshow","#pagetwo",function(){
+    var plot1 = $.jqplot('chart_div', [[2.89, 3.1, 3.5, 3.4, 2.92]], {
+      title : 'US Dollar',
+
+      axes : {
+        xaxis : {
+          ticks : [[1, 14], [2, 21], [3, 28], [4, 4], [5, 11]] //using 2d value array
+        },
+        yaxis : {
+          ticks : [2.8, 3.0, 3.2, 3.4, 3.6]
+
+        }
+
+      }
+    });
+  });
+
+</script>

@@ -42,17 +42,31 @@ describe BloodBagAttribute do
   end
 
   it 'is_integer? returns true if the bbat_BloodAttributeMnemonic of the blood bag attribute starts with HBEAT' do
-    expect(blood_bag_attribute.is_integer?).to be_truthy
+    expect(blood_bag_attribute.is_numeric?).to be(true)
   end
 
-  it 'is_integer? returns false if the bbat_BloodAttributeMnemonic of the blood bag attribute does not start with HBEAT' do
+  it 'is_integer? returns true if the bbat_BloodAttributeMnemonic of the blood bag attribute starts with BLDPRESSURE' do
+    blood_bag_attribute.bbat_BloodAttributeMnemonic = 'BLDPRESSURE15'
+    expect(blood_bag_attribute.is_numeric?).to be(true)
+  end
+
+  it 'is_integer? returns true if the bbat_BloodAttributeMnemonic of the blood bag attribute match P[0-9]+' do
+    blood_bag_attribute.bbat_BloodAttributeMnemonic = 'P0'
+    expect(blood_bag_attribute.is_numeric?).to be(true)
+    blood_bag_attribute.bbat_BloodAttributeMnemonic = 'P15'
+    expect(blood_bag_attribute.is_numeric?).to be(true)
+    blood_bag_attribute.bbat_BloodAttributeMnemonic = 'P9999'
+    expect(blood_bag_attribute.is_numeric?).to be(true)
+  end
+
+  it 'is_integer? returns false if the bbat_BloodAttributeMnemonic of the blood bag attribute does not match a pattern' do
     blood_bag_attribute.bbat_BloodAttributeMnemonic = 'COLOR'
-    expect(blood_bag_attribute.is_integer?).to be_falsey
+    expect(blood_bag_attribute.is_numeric?).to be(false)
   end
 
   it 'is_integer? returns false if the bbat_BloodAttributeMnemonic of the blood bag attribute is nil' do
     blood_bag_attribute.bbat_BloodAttributeMnemonic = nil
-    expect(blood_bag_attribute.is_integer?).to be_falsey
+    expect(blood_bag_attribute.is_numeric?).to be(false)
   end
 
 

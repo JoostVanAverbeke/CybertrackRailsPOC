@@ -13,7 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.mobile
-///= require_directory .
+//= require jqplot
+//= require ./blood_bag_attributes
 
 // WORK AROUND FOR ISSUE:
 // Tabs widget exhibits odd behavior when it's on a page that is linked to

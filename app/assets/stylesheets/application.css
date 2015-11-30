@@ -12,6 +12,7 @@
  *
  *= require telerik/kendo.common.min
  *= require telerik/kendo.default.min
+ *= require jqplot
  *= require_self
  */
 

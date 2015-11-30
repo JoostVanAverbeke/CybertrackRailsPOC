@@ -1,11 +1,13 @@
 <div id="<%= group.label %>" class="ui-body-c tablist-content">
-  <h2><%= parameters_label(group.label) %></h2>
-  <ul data-role="listview" data-inset="true">
-    <% group.attributes.each do |blood_bag_attribute| %>
-        <li>
-          <%= label_tag :externalize, blood_bag_attribute.externalize %>
-          <%= blood_bag_attribute.bbat_ExtraInfo %>
-        </li>
-    <% end %>
-  </ul>
+  <fieldset data-role="collapsible" data-collapsed="false">
+    <legend><%= parameters_label(group.label) %></legend>
+    <ul data-role="listview" data-inset="true">
+      <% group.attributes.each do |blood_bag_attribute| %>
+          <li>
+            <%= label_tag :externalize, blood_bag_attribute.externalize %>
+            <%= blood_bag_attribute.bbat_ExtraInfo %>
+          </li>
+      <% end %>
+    </ul>
+  </fieldset>
 </div>

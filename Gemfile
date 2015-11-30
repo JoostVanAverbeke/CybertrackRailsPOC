@@ -54,6 +54,9 @@ gem 'httparty', '~> 0.13.5'
 # JQuery Mobile files for Rails' assets pipeline
 gem 'jquery_mobile_rails', '~> 1.4.5'
 
+# JqPlot for Rails 3.1 asset pipeline
+gem 'jqplot-rails', '~> 0.3'
+
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
   #  gem 'debugger'

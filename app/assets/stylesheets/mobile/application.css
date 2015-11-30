@@ -12,6 +12,7 @@
  *= require jquery.mobile
  *= require jquery_mobile/cybertrack-poc-theme.min
  *= require jquery_mobile/jquery.mobile.icons.min
+ *= require jqplot
  *= require_tree .
  */
 body, p, ol, ul, td {

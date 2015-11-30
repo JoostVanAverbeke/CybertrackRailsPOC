@@ -1,11 +1,12 @@
 <div id="<%= group.label %>" class="ui-body-c tablist-content">
-  <h2><%= parameters_label(group.label) %></h2>
+  <fieldset data-role="collapsible" data-collapsed="false">
+  <legend><%= parameters_label(group.label) %></legend>
   <ul data-role="listview" data-inset="true">
     <% group.attributes.each do |blood_bag_attribute| %>
       <%= fields_for "blood_bag_attribute[]", blood_bag_attribute do |blood_bag_attribute_fields| %>
         <div>
           <%= label_tag :externalize, blood_bag_attribute.externalize %>
-          <% if blood_bag_attribute.is_integer? %>
+          <% if blood_bag_attribute.is_numeric? %>
               <%= blood_bag_attribute_fields.range_field :bbat_ExtraInfo, { data: { highlight: true}, min: '40', max: '250' } %>
           <% else %>
               <%= blood_bag_attribute_fields.text_field :bbat_ExtraInfo %>
@@ -14,4 +15,5 @@
       <% end %>
     <% end %>
   </ul>
+  </fieldset>
 </div>

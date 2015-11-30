@@ -15,11 +15,11 @@ class BloodBagAttributeService
 
   def blood_bag_attributes(blood_bag_id, options = {})
     options.merge!({basic_auth: @auth})
-    catch_exceptions do
-     self.class.get("/bloodbags/#{blood_bag_id}/attributes?type=Parameter", options)
-    end
+    # catch_exceptions do
+    #  self.class.get("/bloodbags/#{blood_bag_id}/attributes?type=Parameter", options)
+    # end
     # TODO(JVA) Dummy implementation, since the Glims BTMService doesn't yet support this REST API
-    # build_httparty_response(ds_blood_bag_attributes)
+    build_httparty_response(ds_blood_bag_attributes)
 
   end
 
@@ -71,11 +71,64 @@ class BloodBagAttributeService
   def blood_bag_attribute_3
     { "bbat_Id" =>  3, "bbat_BloodBag" =>  456575, "bbat_BloodAttribute" =>  12347,
       "bbat_BloodAttributeMnemonic" => "HBEAT30", "bbat_BloodAttributeName" => "Hart Beat",
-      "bbat_BloodAttrMinAfterStart" => 30, "bbat_ExtraInfo"  => nil }
+      "bbat_BloodAttrMinAfterStart" => 30, "bbat_ExtraInfo"  => "70" }
+  end
+
+  def blood_bag_attribute_4
+    { "bbat_Id" =>  1, "bbat_BloodBag" =>  456575, "bbat_BloodAttribute" =>  12348,
+      "bbat_BloodAttributeMnemonic" => "BLDPRESSURE0", "bbat_BloodAttributeName" => "Blood pressure",
+      "bbat_BloodAttrMinAfterStart" => 0, "bbat_ExtraInfo"  => "65" }
+  end
+
+  def blood_bag_attribute_5
+    { "bbat_Id" =>  2, "bbat_BloodBag" =>  456575, "bbat_BloodAttribute" =>  12349,
+      "bbat_BloodAttributeMnemonic" => "BLDPRESSURE15", "bbat_BloodAttributeName" => "Blood pressure",
+      "bbat_BloodAttrMinAfterStart" => 15, "bbat_ExtraInfo"  => '105' }
+  end
+
+  def blood_bag_attribute_6
+    { "bbat_Id" =>  3, "bbat_BloodBag" =>  456575, "bbat_BloodAttribute" =>  12350,
+      "bbat_BloodAttributeMnemonic" => "BLDPRESSURE30", "bbat_BloodAttributeName" => "Blood pressure",
+      "bbat_BloodAttrMinAfterStart" => 30, "bbat_ExtraInfo"  => '110' }
+  end
+
+  def blood_bag_attribute_7
+    { "bbat_Id" =>  1, "bbat_BloodBag" =>  456575, "bbat_BloodAttribute" =>  12351,
+      "bbat_BloodAttributeMnemonic" => "COLOR0", "bbat_BloodAttributeName" => "Color",
+      "bbat_BloodAttrMinAfterStart" => 0, "bbat_ExtraInfo"  => "White" }
+  end
+
+  def blood_bag_attribute_8
+    { "bbat_Id" =>  2, "bbat_BloodBag" =>  456575, "bbat_BloodAttribute" =>  12352,
+      "bbat_BloodAttributeMnemonic" => "COLOR15", "bbat_BloodAttributeName" => "Color",
+      "bbat_BloodAttrMinAfterStart" => 15, "bbat_ExtraInfo"  => 'Blue' }
+  end
+
+  def blood_bag_attribute_9
+    { "bbat_Id" =>  3, "bbat_BloodBag" =>  456575, "bbat_BloodAttribute" =>  123453,
+      "bbat_BloodAttributeMnemonic" => "COLOR30", "bbat_BloodAttributeName" => "Color",
+      "bbat_BloodAttrMinAfterStart" => 30, "bbat_ExtraInfo"  => 'Red' }
+  end
+
+  def blood_bag_attribute_10
+    { "bbat_Id" =>  3, "bbat_BloodBag" =>  456575, "bbat_BloodAttribute" =>  12354,
+      "bbat_BloodAttributeMnemonic" => "BLDPRESSURE9999", "bbat_BloodAttributeName" => "Blood pressure",
+      "bbat_BloodAttrMinAfterStart" => 9999, "bbat_ExtraInfo"  => nil }
   end
 
   def blood_bag_attribute_array
-    [ blood_bag_attribute_1, blood_bag_attribute_2, blood_bag_attribute_3]
+    [
+        blood_bag_attribute_1,
+        blood_bag_attribute_2,
+        blood_bag_attribute_3,
+        blood_bag_attribute_4,
+        blood_bag_attribute_5,
+        blood_bag_attribute_6,
+        blood_bag_attribute_7,
+        blood_bag_attribute_8,
+        blood_bag_attribute_9,
+        blood_bag_attribute_10
+    ]
   end
 
   def tt_blood_bag_attribute

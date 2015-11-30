@@ -22,6 +22,7 @@
 //= require telerik/cultures/kendo.culture.bg-BG.min
 //= require telerik/cultures/kendo.culture.nl-BE.min
 //= require locale/kendo.nl-BE
+//= require jqplot
 //= require menu
 //= require patients
 //= require blood_selections

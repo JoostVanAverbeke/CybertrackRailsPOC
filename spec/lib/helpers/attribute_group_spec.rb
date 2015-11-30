@@ -2,11 +2,15 @@ require 'rails_helper'
 
 describe AttributeGroup do
   let(:blood_bag_attribute_P15_15) {
-    BloodBagAttribute.new({"bbat_Id" => nil, "bbat_BloodBag" => 456575, "bbat_BloodAttribute" => 9, "bbat_BloodAttributeMnemonic" => "P15", "bbat_BloodAttributeName" => "Pols", "bbat_BloodAttrMinAfterStart" => 15, "bbat_BloodAttributeIsMandatory" => false, "bbat_ExtraInfo" => nil, "bbat_Present" => nil})
+    FactoryGirl.build(:blood_bag_attribute, bbat_BloodAttribute: 9, bbat_BloodAttributeMnemonic: "P15", bbat_BloodAttributeName: "Pols", bbat_BloodAttrMinAfterStart: 15, bbat_ExtraInfo: 95)
   }
 
   let(:blood_bag_attribute_R15_15) {
-    BloodBagAttribute.new({"bbat_Id" => nil, "bbat_BloodBag" => 456575, "bbat_BloodAttribute" => 6, "bbat_BloodAttributeMnemonic" => "R15", "bbat_BloodAttributeName" => "Bloeddruk", "bbat_BloodAttrMinAfterStart" => 15, "bbat_BloodAttributeIsMandatory" => false, "bbat_ExtraInfo" => nil, "bbat_Present" => nil})
+    FactoryGirl.build(:blood_bag_attribute, bbat_BloodAttribute: 6, bbat_BloodAttributeMnemonic: "R15", bbat_BloodAttributeName: "Bloeddruk", bbat_BloodAttrMinAfterStart: 15, bbat_ExtraInfo: 95)
+  }
+
+  let(:blood_bag_attribute_P30_30) {
+    FactoryGirl.build(:blood_bag_attribute, bbat_BloodAttribute: 118, bbat_BloodAttributeMnemonic: "P30", bbat_BloodAttributeName: "Pols", bbat_BloodAttrMinAfterStart: 30, bbat_ExtraInfo: 90)
   }
 
   let(:attribute_group) { AttributeGroup.new(15, 'label') }
@@ -30,6 +34,19 @@ describe AttributeGroup do
   it 'returns the pushed attribute' do
     attribute_group.push blood_bag_attribute_P15_15
     expect(attribute_group.attributes[0]).to be(blood_bag_attribute_P15_15)
+  end
+
+  it 'is_numeric? returns true if all its attributes are numeric' do
+    attribute_group << blood_bag_attribute_P15_15
+    attribute_group << blood_bag_attribute_P30_30
+    # attribute_group << FactoryGirl.build(:blood_bag_attribute, bbat_BloodAttributeMnemonic: "NOT_NUMERIC")
+    expect(attribute_group.is_numeric?).to be(true)
+  end
+
+  it 'returns an array of coordinates of its attributes if they are numeric' do
+    pols_attribute_group = AttributeGroup.new('Pols', nil)
+    pols_attribute_group.concat([blood_bag_attribute_P15_15, blood_bag_attribute_P30_30])
+    expect(pols_attribute_group.coordinates.length).to eq(2)
   end
 
 end
