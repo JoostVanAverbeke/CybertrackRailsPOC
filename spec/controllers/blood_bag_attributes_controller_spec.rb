@@ -41,6 +41,13 @@ RSpec.describe BloodBagAttributesController, type: :controller do
     end
   end
 
+  describe "GET #graphs" do
+    it "returns http success" do
+      get :graphs, blood_bag_id: 456575
+      expect(response).to have_http_status(:success)
+    end
+  end
+
   describe 'PATCH #update_all nested blood bag attributes for blood bag' do
     describe "valid attributes" do
 

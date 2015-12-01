@@ -10,6 +10,10 @@ class BloodBagAttributesController < ApplicationController
     render layout: 'blood_bag_attributes' if mobile_device?
   end
 
+  def graphs
+    index
+  end
+
   def index
     @patient_id = params['patient_id']
     response = @blood_bag_attribute_service.blood_bag_attributes(@blood_bag.bbag_Id)
