@@ -71,6 +71,7 @@ Rails.application.routes.draw do
   resources :blood_bags, only: [:show] do
     resources :blood_bag_attributes, only: [:show, :index] do
       collection do
+        get :graphs
         get :edit_all
         put :update_all
       end
