@@ -7,7 +7,7 @@
   </div>
   <div id="blood_bag_attributes_container">
     <h2>Parameters</h2>
-    <%= form_for :blood_bag_attributes, :url => update_all_blood_bag_blood_bag_attributes_path, :html => { :method => :put, :multipart => true } do %>
+    <%= form_for :blood_bag_attributes, :url => update_all_blood_bag_blood_bag_attributes_path, :html => { :method => :put, :multipart => true },  data: { ajax: false} do %>
       <%= hidden_field_tag :before_blood_bag_attributes, jsonify(@blood_bag_attributes) %>
       <% grouper = BloodBagAttributesGrouper.new(blood_bag_attributes) %>
       <div data-role="tabs">

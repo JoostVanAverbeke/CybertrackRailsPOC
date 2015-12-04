@@ -7,7 +7,7 @@
         <ul data-role="listview">
           <li>
             <%= link_to blood_selection.bsel_ProductMnemonic,
-                          blood_bag_blood_bag_attributes_path(blood_selection.bsel_BloodBag, patient_id: patient_id) %>
+                          blood_bag_blood_bag_attributes_path(blood_selection.bsel_BloodBag, patient_id: patient_id), rel: 'external' %>
           </li>
         </ul>
     <% end %>
