@@ -8,7 +8,7 @@ class BloodBagAttributeService
   default_timeout 3
   logger Rails.logger
   debug_output $stderr if Rails.env.development?
-
+  @@counter = 0
   def initialize(user, password)
     @auth = create_auth_hash(user, password)
   end
@@ -19,6 +19,7 @@ class BloodBagAttributeService
     #  self.class.get("/bloodbags/#{blood_bag_id}/attributes?type=Parameter", options)
     # end
     # TODO(JVA) Dummy implementation, since the Glims BTMService doesn't yet support this REST API
+    @@counter = @@counter + 1
     build_httparty_response(ds_blood_bag_attributes)
 
   end
@@ -49,17 +50,11 @@ class BloodBagAttributeService
     parsed_response = lambda { hash }
     response = HTTParty::Response.new(request_object, response_object, parsed_response, { body: hash.to_s })
   end
-  attr_accessor :id,
-                :bbat_Id, :bbat_BloodBag,
-                :bbat_BloodAttribute,
-                :bbat_BloodAttributeMnemonic, :bbat_BloodAttributeName,
-                :bbat_BloodAttrMinAfterStart, :bbat_BloodAttributeIsMandatory,
-                :bbat_ExtraInfo,:bbat_Present
 
   def blood_bag_attribute_1
     { "bbat_Id" =>  1, "bbat_BloodBag" =>  456575, "bbat_BloodAttribute" =>  12345,
       "bbat_BloodAttributeMnemonic" => "HBEAT0", "bbat_BloodAttributeName" => "Hart Beat",
-      "bbat_BloodAttrMinAfterStart" => 0, "bbat_ExtraInfo"  => "95" }
+      "bbat_BloodAttrMinAfterStart" => 0, "bbat_ExtraInfo"  => (@@counter % 2 == 0) ? "60" : "105" }
   end
 
   def blood_bag_attribute_2
