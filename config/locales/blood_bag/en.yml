@@ -1,6 +1,6 @@
 en:
-  blood_bag_attributes:
+  blood_bag:
     helpers:
       label:
-        listing: 'Blood Bag Parameters'
+        blood_group: 'bloed groep'
         save_parameters: 'Save parameters'
