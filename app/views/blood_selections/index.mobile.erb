@@ -17,11 +17,10 @@
       <% end %>
     </ul>
   </div>
-  <div data-role="navbar">
+  <div data-role="navbar" data-iconpos="left">
     <ul>
       <li>
-        <%= link_to patients_path, class: :anchorButton do %>
-            <%= image_tag('black/back.png', class: 'button_image_text') %>
+        <%= link_to patients_path, data: { icon: 'back'} do %>
             <%= t('application.helpers.label.back') %>
         <% end %>
       </li>

@@ -24,8 +24,8 @@ en:
     helpers:
       label:
         back: 'Back'
-      label:
         save: 'Save'
+        edit: 'Edit'
 
       languages:
         german: 'German'

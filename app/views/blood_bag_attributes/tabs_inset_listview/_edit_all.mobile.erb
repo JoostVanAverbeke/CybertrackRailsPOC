@@ -21,11 +21,10 @@
       </div>
     <% end %>
   </div>
-  <div data-role="navbar">
+  <div data-role="navbar" data-iconpos="left">
     <ul>
       <li>
-        <%= link_to blood_bag_blood_bag_attributes_path do %>
-            <%= image_tag('black/back.png', class: 'button_image_text') %>
+        <%= link_to blood_bag_blood_bag_attributes_path, data: { icon: 'back'} do %>
             <%= t('application.helpers.label.back') %>
         <% end %>
       </li>

@@ -5,6 +5,7 @@ RSpec.describe BloodBagAttributesController, type: :controller do
   include BloodBagAttributesHelper
 
   let(:blood_bags) { [ FactoryGirl.build(:blood_bag)]}
+
   let(:blood_bag_attribute) { FactoryGirl.build(:blood_bag_attribute) }
   let(:blood_bag_attributes) { [
       blood_bag_attribute,
@@ -27,23 +28,9 @@ RSpec.describe BloodBagAttributesController, type: :controller do
     allow_any_instance_of(BloodBagAttributeService).to receive(:blood_bag_attributes).and_return(blood_bag_attributes_httparty_response)
   end
 
-  describe "GET #show" do
-    it "returns http success" do
-      get :show, blood_bag_id: 456575, id: 1
-      expect(response).to have_http_status(:success)
-    end
-  end
-
   describe "GET #index" do
     it "returns http success" do
       get :index, blood_bag_id: 456575
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #graphs" do
-    it "returns http success" do
-      get :graphs, blood_bag_id: 456575
       expect(response).to have_http_status(:success)
     end
   end
@@ -52,8 +39,8 @@ RSpec.describe BloodBagAttributesController, type: :controller do
     describe "valid attributes" do
 
       let(:the_blood_bag_attributes) { [ blood_bag_attribute ]}
-      let(:update_all_blood_bag_attribute)  {
-        patch :update_all, blood_bag_id: blood_bag_attribute.bbat_BloodBag,
+      let(:update_all_blood_bag_attributes)  {
+        put :update_all, blood_bag_id: blood_bag_attribute.bbat_BloodBag,
               :blood_bag_attribute => {
                   blood_bag_attribute.to_param => FactoryGirl.attributes_for(:blood_bag_attribute, id: blood_bag_attribute.id, bbat_ExtraInfo: 99)
               },
@@ -64,10 +51,11 @@ RSpec.describe BloodBagAttributesController, type: :controller do
         blood_bag_attribute_service = class_double("BloodBagAttributeService")
         allow(blood_bag_attribute_service).to receive(:put).with(any_args).and_return('joost')
         expect(blood_bag_attribute_service).to receive(:put).exactly(1).times
-        update_all_blood_bag_attribute
+        update_all_blood_bag_attributes
       end
 
       it "redirects to the index view (list of blood bag attributes)" do
+        update_all_blood_bag_attributes
         expect(response).to redirect_to blood_bag_blood_bag_attributes_url
       end
 

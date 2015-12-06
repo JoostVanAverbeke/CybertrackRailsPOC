@@ -3,8 +3,8 @@ nl-BE:
     helpers:
       label:
         back: 'Terug'
-      label:
         save: 'Bewaar'
+        edit: 'Wijzig'
       languages:
         german: 'Duits'
         english: 'Engels'

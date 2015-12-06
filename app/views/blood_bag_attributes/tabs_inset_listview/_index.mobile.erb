@@ -15,23 +15,20 @@
       <% end %>
     </div>
   </div>
-  <a href="#pagetwo" data-transition="flip">Graphs</a>
+  <a href="#pagetwo" data-transition="flip" class="ui-btn ui-shadow ui-corner-all ui-icon-bar-chart-o ui-btn-icon-notext">Graphs</a>
 
-  </div>
-  <div data-role="navbar">
-    <ul>
-      <li>
-        <%= link_to patient_id ? patient_blood_selections_path(patient_id) : patients_path, class: :anchorButton do %>
-            <%= image_tag('black/back.png', class: 'button_image_text') %>
-            <%= t('application.helpers.label.back') %>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to edit_all_blood_bag_blood_bag_attributes_path blood_bag.bbag_Id do %>
-            <%= image_tag('black/edit.png', class: 'button_image_text') %>
-            <%= t('application.helpers.label.edit') %>
-        <% end %>
-      </li>
-    </ul>
-  </div>
+</div>
+<div data-role="navbar" data-iconpos="left">
+  <ul>
+    <li>
+      <%= link_to patient_id ? patient_blood_selections_path(patient_id) : patients_path, data: { icon: 'back'}  do %>
+          <%= t('application.helpers.label.back') %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to edit_all_blood_bag_blood_bag_attributes_path, data: { icon: 'edit'}  do %>
+          <%= t('application.helpers.label.edit') %>
+      <% end %>
+    </li>
+  </ul>
 </div>
