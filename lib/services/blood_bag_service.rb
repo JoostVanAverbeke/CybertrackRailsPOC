@@ -15,11 +15,11 @@ class BloodBagService
 
   def find_by_id(id, options = {})
     options.merge!({basic_auth: @auth})
-    # catch_exceptions do
-    #   self.class.get("/bloodbags/#{id}", options)
-    # end
+    catch_exceptions do
+      self.class.get("/bloodbags/#{id}", options)
+    end
 #   TODO(JVA) Dummy implementation, since the Glims BTMService doesn't yet support this REST API
-    build_httparty_response(ds_blood_bags)
+#    build_httparty_response(ds_blood_bags)
   end
 
   private
