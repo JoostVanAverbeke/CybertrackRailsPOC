@@ -15,12 +15,12 @@ class BloodBagAttributeService
 
   def blood_bag_attributes(blood_bag_id, options = {})
     options.merge!({basic_auth: @auth})
-    # catch_exceptions do
-    #  self.class.get("/bloodbags/#{blood_bag_id}/attributes?type=Parameter", options)
-    # end
+    catch_exceptions do
+     self.class.get("/bloodbags/#{blood_bag_id}/attributes?type=Parameter", options)
+    end
     # TODO(JVA) Dummy implementation, since the Glims BTMService doesn't yet support this REST API
-    @@counter = @@counter + 1
-    build_httparty_response(ds_blood_bag_attributes)
+    # @@counter = @@counter + 1
+    # build_httparty_response(ds_blood_bag_attributes)
 
   end
 

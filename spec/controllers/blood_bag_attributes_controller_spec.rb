@@ -22,14 +22,14 @@ RSpec.describe BloodBagAttributesController, type: :controller do
 
   before :each do
     # Stub login in user
-    allow(controller).to receive(:current_user).and_return(FactoryGirl.build(:user))
-    session[:user] = { login: 'bar', password: '1', language: 'en' }
+    allow(controller).to receive(:find_user).and_return(FactoryGirl.build(:user))
+    session[:user] = { 'login' => 'bar', 'password' => '1', 'language' => 'en' }
     allow_any_instance_of(BloodBagService).to receive(:find_by_id).and_return(blood_bag_httparty_response)
-    allow_any_instance_of(BloodBagAttributeService).to receive(:blood_bag_attributes).and_return(blood_bag_attributes_httparty_response)
   end
 
   describe "GET #index" do
     it "returns http success" do
+      allow_any_instance_of(BloodBagAttributeService).to receive(:blood_bag_attributes).and_return(blood_bag_attributes_httparty_response)
       get :index, blood_bag_id: 456575
       expect(response).to have_http_status(:success)
     end
@@ -48,9 +48,11 @@ RSpec.describe BloodBagAttributesController, type: :controller do
       }
 
       it "puts the updated blood bag attributes data set to the remote rest service" do
-        blood_bag_attribute_service = class_double("BloodBagAttributeService")
-        allow(blood_bag_attribute_service).to receive(:put).with(any_args).and_return('joost')
-        expect(blood_bag_attribute_service).to receive(:put).exactly(1).times
+        # see https://relishapp.com/rspec/rspec-mocks/v/3-0/docs/verifying-doubles/using-a-class-double for more details
+        # on rspec mock and class double
+        blood_bag_attribute_service = class_double("BloodBagAttributeService").as_stubbed_const(:transfer_nested_constants => true)
+        expect(blood_bag_attribute_service).to receive(:new)
+        expect(blood_bag_attribute_service).to receive(:put)
         update_all_blood_bag_attributes
       end
 
