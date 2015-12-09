@@ -24,7 +24,7 @@
         var externalizationLabel = $('#grid').data('labels').externalization;
         var bloodSelectionsLabel = $('#grid').data('labels').bloodselections;
 
-        var debug = true;
+        var debug = false;
 
         kendo.culture(locale);
         if (debug) mockGetRequest(crudServiceBaseUrl);
@@ -49,8 +49,7 @@
                             var tr = $(e.target).closest("tr"); // get the current table row (tr)
                             // get the data bound to the current table row
                             var data = this.dataItem(tr);
-                            console.log("Details for: " + data.prsn_Object);
-                            window.location = "http://0.0.0.0:3600/patients/" + data.prsn_Id + "/blood_selections";
+                            window.location = "/patients/" + data.prsn_Id + "/blood_selections";
                         }
                     }]
                 }

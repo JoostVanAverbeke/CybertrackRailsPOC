@@ -50,13 +50,12 @@ RSpec.describe BloodBagAttributesController, type: :controller do
       it "puts the updated blood bag attributes data set to the remote rest service" do
         # see https://relishapp.com/rspec/rspec-mocks/v/3-0/docs/verifying-doubles/using-a-class-double for more details
         # on rspec mock and class double
-        blood_bag_attribute_service = class_double("BloodBagAttributeService").as_stubbed_const(:transfer_nested_constants => true)
-        expect(blood_bag_attribute_service).to receive(:new)
-        expect(blood_bag_attribute_service).to receive(:put)
+        expect(BloodBagAttributeService).to receive(:put).with('/bloodbags/1/attributes', anything)
         update_all_blood_bag_attributes
       end
 
       it "redirects to the index view (list of blood bag attributes)" do
+        allow_any_instance_of(BloodBagAttributeService).to receive(:put_blood_bag_attribute_data_set).and_return(:success)
         update_all_blood_bag_attributes
         expect(response).to redirect_to blood_bag_blood_bag_attributes_url
       end
