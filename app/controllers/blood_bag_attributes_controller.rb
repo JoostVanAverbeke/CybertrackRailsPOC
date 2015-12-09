@@ -23,7 +23,7 @@ class BloodBagAttributesController < ApplicationController
   def update_all
     before_blood_bag_attributes = parse_blood_bag_attributes_params(params['before_blood_bag_attributes'])
     params['blood_bag_attribute'].keys.each do |id|
-      puts "id = #{id} params = #{params['blood_bag_attribute'][id]}"
+      Rails.logger.info "id = #{id} params = #{params['blood_bag_attribute'][id]}"
       blood_bag_attribute = before_blood_bag_attributes.select {
           |blood_bag_attribute| blood_bag_attribute.id == id.to_i
       }.first
