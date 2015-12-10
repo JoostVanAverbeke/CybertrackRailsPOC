@@ -1,8 +1,50 @@
-<%= content_tag 'fieldset', data: { role: :collapsible, theme: get_status_theme(blood_selection.bsel_Status) } do %>
+<%= content_tag 'fieldset', data: { role: :collapsible } do %>
     <legend><%= blood_selection.bsel_ProductMnemonic %> <%= blood_selection.bsel_StatusString %></legend>
-    <p><%= blood_selection.bsel_BloodGroupString %></p>
-    <p><%= blood_selection.bsel_RhesusString %></p>
-    <p><%= blood_selection.bsel_PositiveScreening %></p>
+    <%= render :partial => 'shared/record_field',
+               locals: {
+                       field: blood_selection.bsel_BloodBagExternalId,
+                       tag: :bsel_BloodBagExternalId,
+                       label: t('blood_selections.helpers.label.externalId'),
+                       class_attribute: nil,
+                       data_type: :string
+               } %>
+
+    <%= render :partial => 'shared/record_field',
+               locals: {
+                       field: blood_selection.bsel_StatusString,
+                       tag: :bsel_StatusString,
+                       label: t('blood_selections.helpers.label.status'),
+                       class_attribute: nil,
+                       data_type: :string
+               } %>
+
+
+    <%= render :partial => 'shared/record_field',
+               locals: {
+                       field: l(json_to_datetime(blood_selection.bsel_OrderLowestObjectDateTime)),
+                       tag: :bsel_OrderLowestObjectDateTime,
+                       label: t('blood_selections.helpers.label.since'),
+                       class_attribute: nil,
+                       data_type: :date_time
+               } %>
+
+    <%= render :partial => 'shared/record_field',
+               locals: {
+                       field: blood_selection.blood_group,
+                       tag: :bsel_blood_group,
+                       label: t('blood_selections.helpers.label.blood_group'),
+                       class_attribute: nil,
+                       data_type: :string
+               } %>
+
+    <%= render :partial => 'shared/record_field',
+               locals: {
+                       field: blood_selection.location,
+                       tag: :bsel_location,
+                       label: t('blood_selections.helpers.label.location'),
+                       class_attribute: nil,
+                       data_type: :string
+               } %>
     <% if blood_selection.bsel_BloodBag %>
         <ul data-role="listview">
           <li>

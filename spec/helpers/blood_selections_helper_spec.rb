@@ -10,21 +10,21 @@ require 'rails_helper'
 #     end
 #   end
 # end
-RSpec.describe SessionsHelper, type: :helper do
+RSpec.describe BloodSelectionsHelper, type: :helper do
 
-  let(:blood_selection_initial_1) { FactoryGirl.build(:blood_selection_initial)}
-  let(:blood_selection_initial_2) { FactoryGirl.build(:blood_selection_initial)}
-  let(:blood_selection_ready_1) { FactoryGirl.build(:blood_selection_ready)}
-  let(:blood_selection_checked_1) { FactoryGirl.build(:blood_selection_checked)}
-  let(:blood_selection_checked_2) { FactoryGirl.build(:blood_selection_checked)}
+  let(:blood_selection_requested_1) { FactoryGirl.build(:blood_selection_requested)}
+  let(:blood_selection_requested_2) { FactoryGirl.build(:blood_selection_requested)}
+  let(:blood_selection_ward_1) { FactoryGirl.build(:blood_selection_ward)}
+  let(:blood_selection_administered_1) { FactoryGirl.build(:blood_selection_administered)}
+  let(:blood_selection_administered_2) { FactoryGirl.build(:blood_selection_administered)}
 
   let(:blood_selections) {
     [
-        blood_selection_initial_1,
-        blood_selection_checked_1,
-        blood_selection_ready_1,
-        blood_selection_checked_2,
-        blood_selection_initial_2,
+        blood_selection_requested_1,
+        blood_selection_administered_1,
+        blood_selection_ward_1,
+        blood_selection_administered_2,
+        blood_selection_requested_2,
     ]}
 
   it 'returns the empty array of pending blood_selections when an empty blood_selections array is passed' do
@@ -32,10 +32,10 @@ RSpec.describe SessionsHelper, type: :helper do
   end
 
   it 'returns the pending transfusions (blood_selections)' do
-    expect(helper.pending_blood_selections(blood_selections).length).to eq(4)
+    expect(helper.pending_blood_selections(blood_selections).length).to eq(3)
   end
 
   it 'returns the past transfusions (blood_selections)' do
-    expect(helper.past_blood_selections(blood_selections).length).to eq(1)
+    expect(helper.past_blood_selections(blood_selections).length).to eq(2)
     end
 end

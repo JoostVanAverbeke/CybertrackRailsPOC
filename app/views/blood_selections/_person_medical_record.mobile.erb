@@ -1,31 +1,35 @@
 <%= content_tag 'fieldset', data: { role: :collapsible, collapsed: false, theme: 'b'} do %>
     <legend><%= t('patients.helpers.label.person_medical_record') %></legend>
-    <%= render :partial => 'person_medical_record_field',
+    <%= render :partial => 'shared/record_field',
                locals: {
                        field: patient.blood_group,
                        tag: :prsn_blood_group,
                        label: t('patients.helpers.label.blood_group'),
-                       class_attribute: nil
+                       class_attribute: nil,
+                       data_type: :string
                } %>
-    <%= render :partial => 'person_medical_record_field',
+    <%= render :partial => 'shared/record_field',
                locals: {
                        field: patient.prsn_PositiveScreening,
                        tag: :prsn_PositiveScreening,
                        label: t('patients.helpers.label.positive_screening'),
-                       class_attribute: :red
+                       class_attribute: :red,
+                       data_type: :string
                } %>
-    <%= render :partial => 'person_medical_record_field',
+    <%= render :partial => 'shared/record_field',
                locals: {
                        field: patient.prsn_TransfusionAdvice,
                        tag: :prsn_TransfusionAdvice,
                        label: t('patients.helpers.label.transfusion_advice'),
-                       class_attribute: :red
+                       class_attribute: :red,
+                       data_type: :string
                } %>
-    <%= render :partial => 'person_medical_record_field',
+    <%= render :partial => 'shared/record_field',
                locals: {
                        field: patient.prsn_TransfusionReaction,
                        tag: :prsn_TransfusionReaction,
                        label: t('patients.helpers.label.transfusion_reaction'),
-                       class_attribute: :red
+                       class_attribute: :red,
+                       data_type: :string
                } %>
 <% end %>

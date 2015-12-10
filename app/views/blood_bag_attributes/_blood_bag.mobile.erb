@@ -18,7 +18,7 @@
     </p>
     <p>
       <%= label_tag :bbag_checkout_time, 'Checked out' %>
-      <%= blood_bag.bbag_CheckOutDateTime %>
+      <%= l(json_to_datetime(blood_bag.bbag_CheckOutDateTime)) %>
     </p>
     <p>
       <%= label_tag :bbag_checkout_ward_mnemonic, 'Location' %>
@@ -26,7 +26,7 @@
     </p>
     <p>
       <%= label_tag :bbag_expiration_time, 'Expires' %>
-      <%= blood_bag.bbag_ExpirationDateTime %>
+      <%= l(json_to_datetime(blood_bag.bbag_ExpirationDateTime)) %>
     </p>
     <p>
       <%= label_tag :bbag_transfusion_hcprovider_fullname, 'Responsible HC provider' %>

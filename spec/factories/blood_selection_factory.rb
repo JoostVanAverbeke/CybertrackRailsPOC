@@ -3,24 +3,26 @@ FactoryGirl.define do
     sequence :bsel_Id do |n|
       n
     end
+    bsel_Status 1
 
-    factory :blood_selection_initial do
-      bsel_Status 1
-      bsel_StatusString 'Initial'
+
+    factory :blood_selection_requested do
+      bsel_StatusString 'Requested'
     end
 
-    factory :blood_selection_checked do
-      bsel_Status 3
-      bsel_StatusString 'Checked'
+    factory :blood_selection_lab do
+      bsel_StatusString 'Lab'
     end
 
-    factory :blood_selection_ready do
-      bsel_Status 4
-      bsel_StatusString 'Ready'
+    factory :blood_selection_ward do
+      bsel_StatusString 'Ward'
     end
 
-    factory :blood_selection_adminstered do
-      bsel_Status 6
+    factory :blood_selection_busy do
+      bsel_StatusString 'Busy'
+    end
+
+    factory :blood_selection_administered do
       bsel_StatusString 'Administered'
     end
   end

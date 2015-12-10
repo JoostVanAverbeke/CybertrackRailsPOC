@@ -5,7 +5,7 @@ class BloodSelection
                 :bsel_OrderInternalId, :bsel_OrderLowestObjectTime, :bsel_ObjectExternalization, :bsel_ProductMnemonic,
                 :bsel_SeqNo, :bsel_BloodBagStatus, :bsel_BloodBagStatusString, :bsel_BloodGroup, :bsel_BloodGroupString,
                 :bsel_Rhesus, :bsel_RhesusString, :bsel_PositiveScreening, :bsel_BloodBag, :bsel_OrderLowestObjectDateTime,
-                :bsel_BloodBagTrsfStartTime
+                :bsel_BloodBagTrsfStartTime, :bsel_BloodBagExternalId
 
   def initialize(attributes = {})
     attributes.each do |name, value|
@@ -13,12 +13,29 @@ class BloodSelection
     end
   end
 
+  def externalize
+    if bsel_BloodBagExternalId.blank?
+      "#{bsel_ProductMnemonic} #{bsel_StatusString}"
+    else
+      "#{bsel_BloodBagExternalId} #{bsel_ProductMnemonic} #{bsel_StatusString}"
+    end
+  end
+
+  def blood_group
+    "#{bsel_BloodGroupString} #{bsel_RhesusString}"
+  end
+
   def pending?
-    theme = case bsel_Status
-              when 1 then true
-              when 2 then true
-              when 3 then true
-              else false
+    !past?
+  end
+
+  def past?
+    bsel_StatusString == 'Administered'
+  end
+
+  def location
+    unless bsel_WardName.blank?
+      bsel_Room.blank? ? bsel_WardName : "#{bsel_WardName} #{bsel_Room}"
     end
   end
 

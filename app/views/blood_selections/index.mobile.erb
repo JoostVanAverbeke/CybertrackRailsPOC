@@ -9,13 +9,14 @@
     <%= render :partial => 'person_medical_record', locals: { patient: @patient } %>
   </div>
   <div id="blood_selections_container">
-    <ul data-role="listview" data-inset="true">
-      <% @blood_selections.each do |blood_selection| %>
-          <li>
-            <%= render :partial => 'blood_selection', locals: { blood_selection: blood_selection, patient_id: @patient.prsn_Id } %>
-          </li>
-      <% end %>
-    </ul>
+    <% if pending_blood_selections?(@blood_selections) %>
+        <h4 class="ui-bar ui-bar-a">Pending transfusions</h4>
+        <%= render :partial => 'blood_selections', locals: { blood_selections: pending_blood_selections(@blood_selections), patient_id: @patient.prsn_Id } %>
+    <% end %>
+    <% if past_blood_selections?(@blood_selections) %>
+        <h4 class="ui-bar ui-bar-b">Past transfusions</h4>
+        <%= render :partial => 'blood_selections', locals: { blood_selections: past_blood_selections(@blood_selections), patient_id: @patient.prsn_Id } %>
+    <% end %>
   </div>
   <div data-role="navbar" data-iconpos="left">
     <ul>

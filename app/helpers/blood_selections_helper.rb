@@ -9,6 +9,14 @@ module BloodSelectionsHelper
     end
   end
 
+  def pending_blood_selections?(blood_selections)
+    pending_blood_selections(blood_selections).length > 0 ? true : false
+  end
+
+  def past_blood_selections?(blood_selections)
+    past_blood_selections(blood_selections).length > 0 ? true : false
+  end
+
   def pending_blood_selections(blood_selections)
     pending_blood_selections = []
     blood_selections.each do |blood_selection|

@@ -1,9 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe BloodSelection do
-  let(:blood_selection_initial) { FactoryGirl.build(:blood_selection_initial)}
+  let(:blood_selection_administered) { FactoryGirl.build(:blood_selection_administered)}
 
-  it 'pending? returns true if the blood_selection has bsel_Status {Initial | Requested | Ward }' do
-    expect(blood_selection_initial.pending?).to eq(true)
+  it 'past? returns true if the blood_selection has bsel_StatusString Adminstered' do
+    expect(blood_selection_administered.past?).to eq(true)
+  end
+
+  it 'pending? returns true if the blood_selection has bsel_StatusString != Adminstered' do
+    expect(blood_selection_administered.pending?).to eq(false)
   end
 end

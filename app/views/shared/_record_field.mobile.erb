@@ -1,0 +1,14 @@
+<% unless field.blank? %>
+    <p>
+      <%= label_tag tag, label %>
+      <% if class_attribute %>
+          <%= content_tag 'div', class: class_attribute do %>
+              <%= data_type == :date_time ? l(json_to_datetime(field)) : field %>
+          <% end %>
+      <% else %>
+          <%= content_tag 'div' do %>
+              <%= data_type == :date_time ? l(json_to_datetime(field)) : field %>
+          <% end %>
+      <% end %>
+    </p>
+<% end %>
