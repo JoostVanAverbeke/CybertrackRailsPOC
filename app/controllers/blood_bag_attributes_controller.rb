@@ -10,7 +10,6 @@ class BloodBagAttributesController < ApplicationController
     else
       Rails.logger.error "HTTP response code = #{response.code}"
     end
-    render layout: 'blood_bag_attributes' if mobile_device?
   end
 
   def edit_all

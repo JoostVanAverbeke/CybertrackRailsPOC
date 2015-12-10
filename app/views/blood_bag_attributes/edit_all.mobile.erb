@@ -1,1 +1,8 @@
-<%= render :partial => 'blood_bag_attributes/tabs_inset_listview/edit_all', locals: {blood_bag: @blood_bag, blood_bag_attributes: @blood_bag_attributes} %>
+<div id="mobile_page" data-role="page">
+  <%= render "shared/header" %>
+
+  <div data-role="content" data-theme="a">
+
+    <%= render :partial => 'blood_bag_attributes/tabs_inset_listview/edit_all', locals: {blood_bag: @blood_bag, blood_bag_attributes: @blood_bag_attributes} %>
+  </div>
+</div>
