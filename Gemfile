@@ -57,6 +57,9 @@ gem 'jquery_mobile_rails', '~> 1.4.5'
 # JqPlot for Rails 3.1 asset pipeline
 gem 'jqplot-rails', '~> 0.3'
 
+# A set of common locale data and translations to internationalize and/or localize your Rails applications.
+gem 'rails-i18n', '~> 4.0', '>= 4.0.7'
+
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
   #  gem 'debugger'
