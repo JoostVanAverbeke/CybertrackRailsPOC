@@ -82,9 +82,17 @@ RSpec.describe BloodBagAttributesHelper, type: :helper do
     expect(helper.anchor_href('label')).to eq('#label')
   end
 
-  it 'returns an array of graph plots' do
+  it 'helper.graph_plots() returns an array of graph plots' do
     expect(helper.graph_plots(blood_bag_attributes).length).to eq(2)
-    puts "plot[0] = #{helper.graph_plots(blood_bag_attributes)[0].inspect}"
-    puts "plot[1] = #{helper.graph_plots(blood_bag_attributes)[1].inspect}"
+    # puts "plot[0] = #{helper.graph_plots(blood_bag_attributes)[0].inspect}"
+    # puts "plot[1] = #{helper.graph_plots(blood_bag_attributes)[1].inspect}"
+  end
+
+  it 'helper.graph_plots?() returns true if it contains graph plots' do
+    expect(helper.graph_plots?(blood_bag_attributes)).to eq(true)
+  end
+
+  it 'helper.graph_plots?() returns false if it does not contain graph plots' do
+    expect(helper.graph_plots?([])).to eq(false)
   end
 end

@@ -15,7 +15,9 @@
       <% end %>
     </div>
   </div>
-  <a href="#pagetwo" data-transition="flip" class="ui-btn ui-shadow ui-corner-all ui-icon-bar-chart-o ui-btn-icon-notext">Graphs</a>
+  <% if graph_plots?(blood_bag_attributes) %>
+    <a href="#pagetwo" data-transition="flip" class="ui-btn ui-shadow ui-corner-all ui-icon-bar-chart-o ui-btn-icon-notext">Graphs</a>
+  <% end %>
 
 </div>
 <div data-role="navbar" data-iconpos="left">

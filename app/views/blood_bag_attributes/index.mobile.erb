@@ -5,16 +5,17 @@
     <%= render :partial => 'blood_bag_attributes/tabs_inset_listview/index', locals: {blood_bag: @blood_bag, blood_bag_attributes: @blood_bag_attributes, patient_id: @patient_id } %>
   </div>
 </div>
+<% if graph_plots?(@blood_bag_attributes) %>
+    <%= content_tag( :div, id: 'pagetwo', data: { role: 'page', dialog: true, plots: graph_plots(@blood_bag_attributes) })  do %>
+      <div data-role="header">
+        <h1>Parameters</h1>
+      </div>
 
-<%= content_tag( :div, id: 'pagetwo', data: { role: 'page', dialog: true, plots: graph_plots(@blood_bag_attributes) })  do %>
-  <div data-role="header">
-    <h1>Parameters</h1>
-  </div>
-
-  <div data-role="main" class="ui-content">
-    <a href="#mobile_page">Back</a>
-    <section data-role="content">
-      <div id="param_chart_div"></div>
-    </section>
-  </div>
+      <div data-role="main" class="ui-content">
+        <a href="#mobile_page">Back</a>
+        <section data-role="content">
+          <div id="param_chart_div"></div>
+        </section>
+      </div>
+    <% end %>
 <% end %>

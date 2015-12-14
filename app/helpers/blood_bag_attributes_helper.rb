@@ -25,4 +25,8 @@ module BloodBagAttributesHelper
     plots
   end
 
+  def graph_plots?(blood_bag_attributes)
+    graph_plots(blood_bag_attributes).length > 0
+  end
+
 end
