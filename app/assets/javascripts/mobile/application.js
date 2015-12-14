@@ -41,3 +41,9 @@ $.widget( "ui.tabs", $.ui.tabs, {
         }
     }
 });
+
+$(document).ready(function() {
+    $('#logo_image').click(function () {
+        window.close();
+    });
+});
