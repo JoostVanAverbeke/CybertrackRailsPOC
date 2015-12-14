@@ -20,10 +20,10 @@ gem 'jquery-rails'
 
 # jQuery plugin for drop-in fix binded events problem caused by Turbolinks
 # Needed to be able to
-gem 'jquery-turbolinks', '~> 2.1.0'
+# gem 'jquery-turbolinks', '~> 2.1.0'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'

@@ -12,20 +12,20 @@ function createBloodSelectionKendoDataSource(url, httpBasicAuthorization) {
                 }
             }
         },
-        pageSize: 15,
+        pageSize: 8,
         schema: {
             model: {
                 id: "bsel_Id",
                 fields: {
                     bsel_ProductMnemonic: { type: "string"},
                     bsel_StatusString: { type: "string"},
-                    //bsel_OrderLowestObjectTime: { type: "date"},
+                    bsel_OrderLowestObjectDateTime: { type: "date"},
                     bsel_BloodGroupString: { type: "string"},
                     bsel_RhesusString: { type: "string"}
                 }
             },
             data: function (response) {
-                alert(JSON.stringify(response));
+                //alert(JSON.stringify(response));
                 return response.dsBloodselections.tt_BloodSelection;
             },
             //

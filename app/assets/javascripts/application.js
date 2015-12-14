@@ -11,9 +11,9 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.turbolinks
+// require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
+// require turbolinks
 //= require jquery.mockjax
 //= require telerik/kendo.all.min
 //= require telerik/cultures/kendo.culture.en-US.min
@@ -21,7 +21,8 @@
 //= require telerik/cultures/kendo.culture.fr-FR.min
 //= require telerik/cultures/kendo.culture.bg-BG.min
 //= require telerik/cultures/kendo.culture.nl-BE.min
-//= require locale/kendo.nl-BE
+// JVA: -> Activate nl-BE specific translations
+// require locale/kendo.nl-BE
 //= require jqplot
 //= require menu
 //= require patients
