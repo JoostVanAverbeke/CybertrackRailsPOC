@@ -9,3 +9,5 @@ en:
         blood_group: 'Blood group'
         rhesus: 'Rhesus'
         attributes: 'Blood bag attributes'
+        pending: 'Pending transfusions'
+        past: 'Past transfusions'

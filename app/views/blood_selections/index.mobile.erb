@@ -10,11 +10,11 @@
   </div>
   <div id="blood_selections_container">
     <% if pending_blood_selections?(@blood_selections) %>
-        <h4 class="ui-bar ui-bar-a">Pending transfusions</h4>
+        <h4 class="ui-bar ui-bar-a"><%= t('blood_selections.helpers.label.pending')%></h4>
         <%= render :partial => 'blood_selections', locals: { blood_selections: pending_blood_selections(@blood_selections), patient_id: @patient.prsn_Id } %>
     <% end %>
     <% if past_blood_selections?(@blood_selections) %>
-        <h4 class="ui-bar ui-bar-b">Past transfusions</h4>
+        <h4 class="ui-bar ui-bar-b"><%= t('blood_selections.helpers.label.past')%></h4>
         <%= render :partial => 'blood_selections', locals: { blood_selections: past_blood_selections(@blood_selections), patient_id: @patient.prsn_Id } %>
     <% end %>
   </div>

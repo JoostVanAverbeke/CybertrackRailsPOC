@@ -9,3 +9,5 @@ nl-BE:
         blood_group: 'Bloedgroep'
         rhesus: 'Rhesus'
         attributes: 'Bloed zak attributen'
+        pending: 'Voorziene transfusies'
+        past: 'Vorige transfusies'
